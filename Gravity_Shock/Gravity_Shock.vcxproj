@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8BB58E07-7B4F-4BF8-A8AA-8DA97BC2672A}</ProjectGuid>
+    <RootNamespace>Gravity_Shock</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <OutDir>bin\$(Configuration)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\include\OGRE;include;$(OGRE_HOME)\Samples\Common\include;$(OGRE_HOME)\caelum\main\include;$(OGRE_HOME)\hydrax\Hydrax-v0.5.1\Hydrax\src;$(CEGUI_HOME)\cegui\include;$(BULLET_HOME)\src;$(OGREBULLET_HOME)\Dynamics\include;$(OGREBULLET_HOME)\Collisions\include;$(OGRE_HOME)\include\OIS;$(OGRE_HOME)\include;$(OGRE_HOME)\boost_1_42;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)/Gravity_Shock.pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\caelum\lib\debug;$(OGRE_HOME)\hydrax\Hydrax-v0.5.1\Hydrax\bin\debug;$(OGREBULLET_HOME)\lib\Debug;$(OGRE_HOME)\lib\debug;$(OGRE_HOME)\boost_1_42\lib;$(CEGUI_HOME)\lib;$(OGREBULLET_HOME);$(BULLET_HOME)\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>caelum_d.lib;Hydrax.lib;CEGUIOgreRenderer_d.lib;CEGUIBase_d.lib;OIS_d.lib;OgreBulletCollisions_d.lib;OgreBulletDynamics_d.lib;bulletcollision.lib;bulletdynamics.lib;LinearMath.lib;GIMPACTutils.lib;ConvexDecomposition.lib;OgreMain_d.lib;OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying exe to samples bin directory ...</Message>
+      <Command>copy "$(OutDir)\$(TargetFileName)" "$(OGRE_HOME)\Bin\$(Configuration)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <StringPooling>true</StringPooling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\include\OGRE;include;$(OGRE_HOME)\Samples\Common\include;$(OGRE_HOME)\caelum\main\include;$(OGRE_HOME)\hydrax\Hydrax-v0.5.1\Hydrax\src;$(CEGUI_HOME)\cegui\include;$(BULLET_HOME)\src;$(OGREBULLET_HOME)\Dynamics\include;$(OGREBULLET_HOME)\Collisions\include;$(OGRE_HOME)\include\OIS;$(OGRE_HOME)\include;$(OGRE_HOME)\boost_1_42;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\caelum\lib\release;$(OGRE_HOME)\hydrax\Hydrax-v0.5.1\Hydrax\bin\release;$(OGREBULLET_HOME)\lib\Release;$(OGRE_HOME)\lib\release;$(OGRE_HOME)\boost_1_42\lib;$(CEGUI_HOME)\lib;$(OGREBULLET_HOME);$(BULLET_HOME)\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>caelum.lib;Hydrax.lib;CEGUIOgreRenderer.lib;CEGUIBase.lib;OIS.lib;OgreBulletCollisions.lib;OgreBulletDynamics.lib;bulletcollision.lib;bulletdynamics.lib;LinearMath.lib;GIMPACTutils.lib;ConvexDecomposition.lib;OgreMain.lib;OgreTerrain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying exe to samples bin directory ...</Message>
+      <Command>copy "$(OutDir)\$(TargetFileName)" "$(OGRE_HOME)\Bin\$(Configuration)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Gravity_Shock.h" />
+    <ClInclude Include="include\GSFrameListener.h" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="res\Resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Gravity_Shock.cpp" />
+    <ClCompile Include="src\GSFrameListener.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.png" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.tga" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\IslandNH.tga" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Palm.tga" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Sand.png" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Sand.tga" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\SandGrass.png" />
+    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\SandGrass.tga" />
+    <None Include="docs\ReadMe.txt" />
+    <None Include="res\Gravity_Shock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\Gravity_Shock.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

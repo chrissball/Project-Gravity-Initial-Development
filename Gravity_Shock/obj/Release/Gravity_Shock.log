@@ -1,0 +1,35 @@
+﻿Build started 17/10/2011 23:22:23.
+     1>Project "C:\Users\FloobieG\Desktop\Gravity_Shock\Gravity_Shock\Gravity_Shock.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "obj\Release\Gravity_Shock.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\ogre\include\OGRE /Iinclude /IC:\ogre\Samples\Common\include /IC:\ogre\caelum\main\include /I"C:\ogre\hydrax\Hydrax-v0.5.1\Hydrax\src" /IC:\cegui\cegui\include /IC:\bullet\src /IC:\ogrebullet\Dynamics\include /IC:\ogrebullet\Collisions\include /IC:\ogre\include\OIS /IC:\ogre\include /IC:\ogre\boost_1_42 /Zi /nologo /W3 /WX- /O2 /Ob1 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /GF /Gm /EHsc /MD /GS- /Gy /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yu"StdAfx.h" /Fp"obj\Release\Gravity_Shock.pch" /Fo"obj\Release\\" /Fd"obj\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\Gravity_Shock.cpp /Zm200 
+         Gravity_Shock.cpp
+       ResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\Release\\Gravity_Shock.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\ogre\caelum\lib\release /LIBPATH:"C:\ogre\hydrax\Hydrax-v0.5.1\Hydrax\bin\release" /LIBPATH:C:\ogrebullet\lib\Release /LIBPATH:C:\ogre\lib\release /LIBPATH:C:\ogre\boost_1_42\lib /LIBPATH:C:\cegui\lib /LIBPATH:C:\ogrebullet /LIBPATH:C:\bullet\lib\Release caelum.lib Hydrax.lib CEGUIOgreRenderer.lib CEGUIBase.lib OIS.lib OgreBulletCollisions.lib OgreBulletDynamics.lib bulletcollision.lib bulletdynamics.lib LinearMath.lib GIMPACTutils.lib ConvexDecomposition.lib OgreMain.lib OgreTerrain.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"obj\Release\Gravity_Shock.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:\Users\FloobieG\Desktop\Gravity_Shock\Gravity_Shock\bin\Release\Gravity_Shock.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\Release\Gravity_Shock.lib" /MACHINE:X86 obj\Release\Gravity_Shock.res
+         obj\Release\Gravity_Shock.obj
+         obj\Release\GSFrameListener.obj
+         obj\Release\Main.obj
+         obj\Release\stdafx.obj
+            Creating library bin\Release\Gravity_Shock.lib and object bin\Release\Gravity_Shock.exp
+         Generating code
+         Finished generating code
+         Gravity_Shock.vcxproj -> C:\Users\FloobieG\Desktop\Gravity_Shock\Gravity_Shock\bin\Release\Gravity_Shock.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"bin\Release\\Gravity_Shock.exe;#1" /manifest obj\Release\Gravity_Shock.exe.intermediate.manifest
+       PostBuildEvent:
+         Description: Copying exe to samples bin directory ...
+         copy "bin\Release\\Gravity_Shock.exe" "C:\ogre\Bin\Release"
+         :VCEnd
+                 1 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "obj\Release\Gravity_Shock.unsuccessfulbuild".
+         Touching "obj\Release\Gravity_Shock.lastbuildstate".
+     1>Done Building Project "C:\Users\FloobieG\Desktop\Gravity_Shock\Gravity_Shock\Gravity_Shock.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:15.84
