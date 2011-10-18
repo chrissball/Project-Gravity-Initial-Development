@@ -1,0 +1,28 @@
+﻿Build started 18/10/2011 12:12:03.
+     1>Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "obj\Debug\Project_Gravity.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+       ResourceCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+       Manifest:
+         All outputs are up-to-date.
+       PostBuildEvent:
+         Description: Copying exe to samples bin directory ...
+         copy "bin\Debug\\Project_Gravity.exe" "C:\ogre\Bin\Debug"
+         :VCEnd
+                 1 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "obj\Debug\Project_Gravity.unsuccessfulbuild".
+         Touching "obj\Debug\Project_Gravity.lastbuildstate".
+     1>Done Building Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.16
