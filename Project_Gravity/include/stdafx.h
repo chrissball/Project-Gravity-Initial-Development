@@ -5,6 +5,7 @@
 #include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
 #include "Shapes/OgreBulletCollisionsStaticPlaneShape.h" // for static planes
 #include "Shapes/OgreBulletCollisionsBoxShape.h"		 // for Boxes
+#include "Shapes/OgreBulletCollisionsTerrainShape.h"	 // for the terrain
 
 #include <OgreCamera.h>
 #include <OgreEntity.h>

@@ -1,44 +1,14 @@
-#ifndef __GRAVITY_SHOCK_h_
-#define __GRAVITY_SHOCK_h_
+#ifndef __Project_Gravity_h_
+#define __Project_Gravity_h_
 
+#include "stdafx.h"
 #include "PGFrameListener.h"
-#include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
-#include "Shapes/OgreBulletCollisionsBoxShape.h"		 // for Boxes
 
-#include <OgreCamera.h>
-#include <OgreEntity.h>
-#include <OgreLogManager.h>
-#include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
-#include <OgreConfigFile.h>
-
-#include <OISEvents.h>
-#include <OISInputManager.h>
-#include <OISKeyboard.h>
-#include <OISMouse.h>
-
-#include <SdkTrays.h>
-#include <SdkCameraMan.h>
-
-#include <Terrain/OgreTerrain.h>
-#include <Terrain/OgreTerrainGroup.h>
-
-#include <CEGUI.h>
-#include <RendererModules/Ogre/CEGUIOgreRenderer.h>
-
-#include "Hydrax/Hydrax.h"
-#include "Hydrax/Noise/Perlin/Perlin.h"
-#include "Hydrax/Modules/ProjectedGrid/ProjectedGrid.h"
-
-#include "Caelum.h"
-
-class Gravity_Shock : public Ogre::WindowEventListener
+class Project_Gravity : public Ogre::WindowEventListener
 {
 public:
-	Gravity_Shock();
-	~Gravity_Shock();
+	Project_Gravity();
+	~Project_Gravity();
 
 	void go(void);
     bool setup();
@@ -56,7 +26,7 @@ public:
 	void createWindows(void);
 
 private:
-	GSFrameListener* mFrameListener;
+	PGFrameListener* mFrameListener;
 
     Ogre::Root *mRoot;
     Ogre::Camera* mCamera;
@@ -80,4 +50,4 @@ private:
 	Hydrax::Hydrax *mHydrax;
 };
  
- #endif // #ifndef __GRAVITY_SHOCK_h_
+ #endif // #ifndef __Project_Gravity_h_

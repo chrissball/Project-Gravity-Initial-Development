@@ -8,7 +8,7 @@
 /*INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 {
  	// Create application object
- 	Gravity_Shock app;
+ 	Project_Gravity app;
  
  	try {
  		app.go();
@@ -23,7 +23,7 @@
 int main( int argc, const char* argv[] )
 {
  	// Create application object
- 	Gravity_Shock app;
+ 	Project_Gravity app;
  
  	try {
  		app.go();

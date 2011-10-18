@@ -1,39 +1,11 @@
-#ifndef __GSFRAMELISTENER_h_
-#define __GSFRAMELISTENER_h_
+#ifndef __PGFRAMELISTENER_h_
+#define __PGFRAMELISTENER_h_
 
-#include "ExampleApplication.h"
-#include "../res/resource.h"
-#include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
-#include "Shapes/OgreBulletCollisionsStaticPlaneShape.h" // for static planes
-#include "Shapes/OgreBulletCollisionsBoxShape.h"		 // for Boxes
+#include "stdafx.h"
 
-#include <OgreCamera.h>
-#include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
-#include <OgreConfigFile.h>
-#include <OgreWindowEventUtilities.h>
-
-#include <OISEvents.h>
-#include <OISInputManager.h>
-#include <OISKeyboard.h>
-#include <OISMouse.h>
-
-#include <Terrain/OgreTerrain.h>
-#include <Terrain/OgreTerrainGroup.h>
-
-#include <CEGUI.h>
-#include <RendererModules/Ogre/CEGUIOgreRenderer.h>
-
-#include "Hydrax/Hydrax.h"
-#include "Hydrax/Noise/Perlin/Perlin.h"
-#include "Hydrax/Modules/ProjectedGrid/ProjectedGrid.h"
-
-#include "Caelum.h"
-
-#include "windows.h"
 #define WIN32_LEAN_AND_MEAN
 
-class GSFrameListener : 
+class PGFrameListener : 
 	public Ogre::FrameListener, 
 	public Ogre::WindowEventListener, 
 	public OIS::KeyListener,
@@ -44,9 +16,6 @@ private:
 	OgreBulletDynamics::DynamicsWorld *mWorld;	// OgreBullet World
 	OgreBulletCollisions::DebugDrawer *debugDrawer;
 	int mNumEntitiesInstanced;
- 
-	std::deque<OgreBulletDynamics::RigidBody *>         mBodies;
-	std::deque<OgreBulletCollisions::CollisionShape *>  mShapes;
 	
     //OIS Input devices
     OIS::InputManager* mInputManager;
@@ -120,15 +89,21 @@ private:
 	Caelum::CaelumSystem *mCaelumSystem;
     float mSpeedFactor;
 
+	
+	// Bullet objects
+	std::deque<OgreBulletDynamics::RigidBody *>         mBodies;
+	std::deque<OgreBulletCollisions::CollisionShape *>  mShapes;
+	OgreBulletCollisions::HeightmapCollisionShape *mTerrainShape;
+
 public:
-    GSFrameListener(
+    PGFrameListener(
   		SceneManager *sceneMgr, 
  		RenderWindow* mWin, 
  		Camera* cam,
  		Vector3 &gravityVector,
  		AxisAlignedBox &bounds,
 		Hydrax::Hydrax *mHyd);
-	~GSFrameListener();
+	~PGFrameListener();
 
 	bool frameStarted(const FrameEvent& evt);
 	bool frameEnded(const FrameEvent& evt);
@@ -152,6 +127,10 @@ public:
     bool quit(const CEGUI::EventArgs &e);
     bool nextLocation(void);
 	void UpdateSpeedFactor(double factor);
+	void spawnBox(void);
+	void createBulletTerrain(void);
+	void createRobot(void);
+	void createCaelumSystem(void);
 };
 
 #endif

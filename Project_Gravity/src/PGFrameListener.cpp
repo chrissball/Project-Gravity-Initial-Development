@@ -4,7 +4,7 @@
 
 using namespace std;
 
-GSFrameListener::GSFrameListener (
+PGFrameListener::PGFrameListener (
 			SceneManager *sceneMgr, 
 			RenderWindow* mWin, 
 			Camera* cam,
@@ -12,119 +12,42 @@ GSFrameListener::GSFrameListener (
 			AxisAlignedBox &bounds,
 			Hydrax::Hydrax *mHyd)
 			:
-			mCamera(cam), mTranslateVector(Vector3::ZERO), mCurrentSpeed(0), mWindow(mWin), mStatsOn(true), 
-			mMoveScale(0.0f), mRotScale(0.0f), mFiltering(TFO_BILINEAR), mAniso(1), mMoveSpeed(200), 
-			mDebugOverlay(0), mInputManager(0), mMouse(0), mKeyboard(0), mSceneMgr(sceneMgr), 
-			mShutDown(false), mTopSpeed(150), mVelocity(Ogre::Vector3::ZERO), mGoingForward(false), mGoingBack(false), 
-			mGoingLeft(false), mGoingRight(false), mGoingUp(false), mGoingDown(false), mFastMove(false), nYaw(false), 
+			mSceneMgr(sceneMgr), mWindow(mWin), mCamera(cam), mHydrax(mHyd), mDebugOverlay(0),
+			mInputManager(0), mMouse(0), mKeyboard(0), mShutDown(false), mTopSpeed(150), 
+			mVelocity(Ogre::Vector3::ZERO), mGoingForward(false), mGoingBack(false), mGoingLeft(false), 
+			mGoingRight(false), mGoingUp(false), mGoingDown(false), mFastMove(false), nYaw(false), 
 			nGoingForward(false), nGoingBack(false), nGoingLeft(false), nGoingRight(false), nGoingUp(false), 
-			nGoingDown(false), freeRoam(true), mHydrax(mHyd), mPaused(true)
+			nGoingDown(false), freeRoam(true), mPaused(true)
 {
 	// Initialize Ogre and OIS (OIS used for mouse and keyboard input)
 	Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
     OIS::ParamList pl;
     size_t windowHnd = 0;
     std::ostringstream windowHndStr;
-	  
     mWindow->getCustomAttribute("WINDOW", &windowHnd);
     windowHndStr << windowHnd;
     pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
 
+	// Initialize input system
     mInputManager = OIS::InputManager::createInputSystem( pl );
-
     mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
     mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, true ));
-
 	mMouse->setEventCallback(this);
 	mKeyboard->setEventCallback(this);
 
-    //Set initial mouse clipping size
+	// Initialize window size
     windowResized(mWindow);
 
     //Register as a Window listener
     Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
-    // create a params panel for displaying sample details
-    Ogre::StringVector items;
-    items.push_back("cam.pX");
-    items.push_back("cam.pY");
-    items.push_back("cam.pZ");
-    items.push_back("");
-    items.push_back("cam.oW");
-    items.push_back("cam.oX");
-    items.push_back("cam.oY");
-    items.push_back("cam.oZ");
-    items.push_back("");
-    items.push_back("Filtering");
-    items.push_back("Poly Mode");
-
-	mNumEntitiesInstanced = 0; // how many shapes are created
-	mSceneMgr = sceneMgr;
 	// Start Bullet
+	mNumEntitiesInstanced = 0; // how many shapes are created
 	mWorld = new OgreBulletDynamics::DynamicsWorld(mSceneMgr, bounds, gravityVector);
- 
- 	// add Debug info display tool - creates a wire frame for the bullet objects
-	debugDrawer = new OgreBulletCollisions::DebugDrawer();
-	debugDrawer->setDrawWireframe(true);	// we want to see the Bullet containers
- 
-	mWorld->setDebugDrawer(debugDrawer);
-	mWorld->setShowDebugShapes(true);	// enable it if you want to see the Bullet containers
-	showDebugOverlay(true);
-	SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode("debugDrawer", Ogre::Vector3::ZERO);
-	node->attachObject(static_cast <SimpleRenderable *> (debugDrawer));
- 
-	// add collision detection to it
-	OgreBulletCollisions::CollisionShape *Shape;
-	Shape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0,1,0), 0); // (normal vector, distance)
-	// a body is needed for the shape
-	OgreBulletDynamics::RigidBody *defaultPlaneBody = new OgreBulletDynamics::RigidBody("BasePlane",
-  												mWorld);
-	defaultPlaneBody->setStaticShape(Shape, 0.1, 0.8, Ogre::Vector3(0, 150, 0));// (shape, restitution, friction)
-	// push the created objects to the deques
-	mShapes.push_back(Shape);
-	mBodies.push_back(defaultPlaneBody);
+	createBulletTerrain();
 
-	// Create the robot
-    mEntity = mSceneMgr->createEntity("Robot", "robot.mesh");
- 
-    // Create the attach robot to robot node
-    mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", Ogre::Vector3(0.0f, 300.0f, 25.0f));
-    mNode->attachObject(mEntity);
-
-	// Create the walking list for the robot to walk
-    mWalkList.push_back(Ogre::Vector3(550.0f,  250.0f,  50.0f ));
-    mWalkList.push_back(Ogre::Vector3(-100.0f,  600.0f, -200.0f));
-
-	// Create the knots for the robot to walk between
-    Ogre::Entity *ent;
-    Ogre::SceneNode *knode;
- 
-    ent = mSceneMgr->createEntity("Knot1", "knot.mesh");
-    knode = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot1Node",
-        Ogre::Vector3(0.0f, 290.0f,  25.0f));
-    knode->attachObject(ent);
-    knode->setScale(0.1f, 0.1f, 0.1f);
- 
-    ent = mSceneMgr->createEntity("Knot2", "knot.mesh");
-    knode = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot2Node",
-        Ogre::Vector3(550.0f, 240.0f,  50.0f));
-    knode->attachObject(ent);
-    knode->setScale(0.1f, 0.1f, 0.1f);
- 
-    ent = mSceneMgr->createEntity("Knot3", "knot.mesh");
-    knode = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot3Node",
-        Ogre::Vector3(-100.0f, 590.0f,-200.0f));
-    knode->attachObject(ent);
-    knode->setScale(0.1f, 0.1f, 0.1f);
-
-	// Set idle animation for the robot
-	mAnimationState = mSceneMgr->getEntity("Robot")->getAnimationState("Idle");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-
-	// Set default values for variables
-    mWalkSpeed = 35.0f;
-    mDirection = Ogre::Vector3::ZERO;
+	// Create the walking robot
+	createRobot();
 
 	// For the mouse cursor on pause
 	CEGUI::MouseCursor::getSingleton().setVisible(false);
@@ -140,38 +63,24 @@ GSFrameListener::GSFrameListener (
 	// Initialize the pause variable
 	mPaused = false;
 
-    // Initialize the caelum day/night weather system
-	// Each on below corresponds to each element in the system
-    Caelum::CaelumSystem::CaelumComponent componentMask;
-	componentMask = static_cast<Caelum::CaelumSystem::CaelumComponent> (
-		Caelum::CaelumSystem::CAELUM_COMPONENT_SUN |				
-		Caelum::CaelumSystem::CAELUM_COMPONENT_MOON |
-		Caelum::CaelumSystem::CAELUM_COMPONENT_SKY_DOME |
-		Caelum::CaelumSystem::CAELUM_COMPONENT_IMAGE_STARFIELD |
-		Caelum::CaelumSystem::CAELUM_COMPONENT_POINT_STARFIELD |
-		Caelum::CaelumSystem::CAELUM_COMPONENT_CLOUDS |
-		0);
-	componentMask = Caelum::CaelumSystem::CAELUM_COMPONENTS_DEFAULT;
-    mCaelumSystem = new Caelum::CaelumSystem(Root::getSingletonPtr(), mSceneMgr, componentMask);
-
-    // Set time acceleration.
-	mCaelumSystem->setSceneFogDensityMultiplier(0.0008f); // or some other small value.
-	mCaelumSystem->setManageSceneFog(false);
-	mCaelumSystem->getUniversalClock()->setTimeScale (128); // This sets the timescale for the day/night system
-
-    // Register caelum as a listener.
-    mWindow->addListener(mCaelumSystem);
-	Root::getSingletonPtr()->addFrameListener(mCaelumSystem);
-
-    UpdateSpeedFactor(mCaelumSystem->getUniversalClock ()->getTimeScale ());
+	// Create the day/night system
+	createCaelumSystem();
 }
 
-GSFrameListener::~GSFrameListener()
+PGFrameListener::~PGFrameListener()
 {
 	// We created the query, and we are also responsible for deleting it.
     mSceneMgr->destroyQuery(mRaySceneQuery);
+ 	delete mWorld->getDebugDrawer();
+ 	mWorld->setDebugDrawer(0);
+ 	delete mWorld;
+
+	if (mCaelumSystem) {
+		mCaelumSystem->shutdown (false);
+		mCaelumSystem = 0;
+	}
 	
- 	// OgreBullet physic delete - RigidBodies
+	// OgreBullet physic delete - RigidBodies
  	std::deque<OgreBulletDynamics::RigidBody *>::iterator itBody = mBodies.begin();
  	while (mBodies.end() != itBody)
  	{   
@@ -187,20 +96,12 @@ GSFrameListener::~GSFrameListener()
  	}
  	mBodies.clear();
  	mShapes.clear();
- 	delete mWorld->getDebugDrawer();
- 	mWorld->setDebugDrawer(0);
- 	delete mWorld;
-
-	if (mCaelumSystem) {
-		mCaelumSystem->shutdown (false);
-		mCaelumSystem = 0;
-	}
 
 	Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
 	windowClosed(mWindow);
 }
 
-bool GSFrameListener::frameStarted(const FrameEvent& evt)
+bool PGFrameListener::frameStarted(const FrameEvent& evt)
 {
 	// Check camera height and make sure it doesnt go through island
 	// NEEDS TO BE UPDATED SO THE CAMERA STAYS ON THE GROUND
@@ -243,7 +144,7 @@ bool GSFrameListener::frameStarted(const FrameEvent& evt)
  	return true;
 }
 
-bool GSFrameListener::frameEnded(const FrameEvent& evt)
+bool PGFrameListener::frameEnded(const FrameEvent& evt)
 {
 	// This was used to update the FPS of the ogre interface but that has been replaced
 	// by the cegui library and so this function should be changed to output the
@@ -255,7 +156,7 @@ bool GSFrameListener::frameEnded(const FrameEvent& evt)
  	return true;
 }
 
-bool GSFrameListener::keyPressed(const OIS::KeyEvent& evt)
+bool PGFrameListener::keyPressed(const OIS::KeyEvent& evt)
 {
 	if (evt.key == OIS::KC_W || evt.key == OIS::KC_UP) mGoingForward = true; // mVariables for camera movement
 	else if (evt.key == OIS::KC_S || evt.key == OIS::KC_DOWN) mGoingBack = true;
@@ -303,46 +204,7 @@ bool GSFrameListener::keyPressed(const OIS::KeyEvent& evt)
     }
 	else if(evt.key == (OIS::KC_B)) // OgreBullet tutorial to spawn boxes
  	{
- 		Vector3 size = Vector3::ZERO;	// size of the box
- 		// starting position of the box
- 		Vector3 position = (mCamera->getDerivedPosition() + mCamera->getDerivedDirection().normalisedCopy() * 10);
- 
- 		// create an ordinary, Ogre mesh with texture
- 		Entity *entity = mSceneMgr->createEntity(
- 				"Box" + StringConverter::toString(mNumEntitiesInstanced),
- 				"cube.mesh");			    
- 		entity->setCastShadows(true);
- 		// we need the bounding box of the box to be able to set the size of the Bullet-box
- 		AxisAlignedBox boundingB = entity->getBoundingBox();
- 		size = boundingB.getSize(); size /= 2.0f; // only the half needed
- 		size *= 0.95f;	// Bullet margin is a bit bigger so we need a smaller size
- 								// (Bullet 2.76 Physics SDK Manual page 18)
- 		entity->setMaterialName("Examples/BumpyMetal");
- 		SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
- 		node->attachObject(entity);
- 		node->scale(0.05f, 0.05f, 0.05f);	// the cube is too big for us
- 		size *= 0.05f;						// don't forget to scale down the Bullet-box too
- 
- 		// after that create the Bullet shape with the calculated size
- 		OgreBulletCollisions::BoxCollisionShape *sceneBoxShape = new OgreBulletCollisions::BoxCollisionShape(size);
- 		// and the Bullet rigid body
- 		OgreBulletDynamics::RigidBody *defaultBody = new OgreBulletDynamics::RigidBody(
- 				"defaultBoxRigid" + StringConverter::toString(mNumEntitiesInstanced), 
- 				mWorld);
- 		defaultBody->setShape(	node,
- 					sceneBoxShape,
- 					0.6f,			// dynamic body restitution
- 					0.6f,			// dynamic body friction
- 					1.0f, 			// dynamic bodymass
- 					position,		// starting position of the box
- 					Quaternion(0,0,0,1));// orientation of the box
- 		    mNumEntitiesInstanced++;				
- 
- 		defaultBody->setLinearVelocity(
- 					mCamera->getDerivedDirection().normalisedCopy() * 7.0f ); // shooting speed
- 		// push the created objects to the dequese
- 		mShapes.push_back(sceneBoxShape);
- 		mBodies.push_back(defaultBody);	
+		spawnBox();
  	}
     else if (evt.key == OIS::KC_ESCAPE)
     {
@@ -357,7 +219,7 @@ bool GSFrameListener::keyPressed(const OIS::KeyEvent& evt)
  	return true;
 }
 
-bool GSFrameListener::keyReleased(const OIS::KeyEvent &evt)
+bool PGFrameListener::keyReleased(const OIS::KeyEvent &evt)
 {
 	if (evt.key == OIS::KC_W || evt.key == OIS::KC_UP) mGoingForward = false; // mVariables for camera movement
 	else if (evt.key == OIS::KC_S || evt.key == OIS::KC_DOWN) mGoingBack = false;
@@ -380,7 +242,7 @@ bool GSFrameListener::keyReleased(const OIS::KeyEvent &evt)
 	return true;
 }
 
-bool GSFrameListener::mouseMoved( const OIS::MouseEvent &evt )
+bool PGFrameListener::mouseMoved( const OIS::MouseEvent &evt )
 {
 
 	if (freeRoam) // freeroam is the in game camera movement
@@ -417,7 +279,7 @@ bool GSFrameListener::mouseMoved( const OIS::MouseEvent &evt )
 	return true;
 }
 
-bool GSFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
+bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
 {
 	// Left mouse button down spawns a robot
 	if (id == OIS::MB_Left)
@@ -463,7 +325,7 @@ bool GSFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButton
     return true;
 }
 
-bool GSFrameListener::mouseReleased( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
+bool PGFrameListener::mouseReleased( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
 {
 	// Left mouse button up
     if (id == OIS::MB_Left)
@@ -476,7 +338,7 @@ bool GSFrameListener::mouseReleased( const OIS::MouseEvent &evt, OIS::MouseButto
 	return true;
 }
 
-CEGUI::MouseButton GSFrameListener::convertButton(OIS::MouseButtonID buttonID)
+CEGUI::MouseButton PGFrameListener::convertButton(OIS::MouseButtonID buttonID)
 {
 	// This function converts the button id from the OIS listener to the cegui id
     switch (buttonID)
@@ -495,7 +357,7 @@ CEGUI::MouseButton GSFrameListener::convertButton(OIS::MouseButtonID buttonID)
     }
 }
 
-bool GSFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
+bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
 	// Ensures the sun is not too reflective on the island
 	mCaelumSystem->getSun()->setSpecularMultiplier(Ogre::ColourValue(0.3, 0.3, 0.3));
@@ -598,7 +460,7 @@ bool GSFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
     return true;
 }
 
-void GSFrameListener::updateStats(void)
+void PGFrameListener::updateStats(void)
 {
 	// CHANGE TO DISPLAY ON CONSOLE
 
@@ -638,7 +500,7 @@ void GSFrameListener::updateStats(void)
 }
 
 //Adjust mouse clipping area for OIS
-void GSFrameListener::windowResized(Ogre::RenderWindow* rw)
+void PGFrameListener::windowResized(Ogre::RenderWindow* rw)
 {
     unsigned int width, height, depth;
     int left, top;
@@ -650,7 +512,7 @@ void GSFrameListener::windowResized(Ogre::RenderWindow* rw)
 }
 
 //Unattach OIS before window shutdown (very important under Linux)
-void GSFrameListener::windowClosed(Ogre::RenderWindow* rw)
+void PGFrameListener::windowClosed(Ogre::RenderWindow* rw)
 {
     //Only close for window that created OIS (the main window in these demos)
     if( rw == mWindow )
@@ -666,7 +528,7 @@ void GSFrameListener::windowClosed(Ogre::RenderWindow* rw)
     }
 }
 
-void GSFrameListener::moveCamera(Ogre::Real timeSinceLastFrame)
+void PGFrameListener::moveCamera(Ogre::Real timeSinceLastFrame)
 {
 	// build our acceleration vector based on keyboard input composite
 	Ogre::Vector3 accel = Ogre::Vector3::ZERO;
@@ -701,7 +563,7 @@ void GSFrameListener::moveCamera(Ogre::Real timeSinceLastFrame)
 	if (mVelocity != Ogre::Vector3::ZERO) mCamera->move(mVelocity * timeSinceLastFrame);
 }
 
-void GSFrameListener::showDebugOverlay(bool show)
+void PGFrameListener::showDebugOverlay(bool show)
 {
 	if (mDebugOverlay)
 	{
@@ -712,7 +574,7 @@ void GSFrameListener::showDebugOverlay(bool show)
 	}
 }
 
-void GSFrameListener::moveNinja(Ogre::Real timeSinceLastFrame)
+void PGFrameListener::moveNinja(Ogre::Real timeSinceLastFrame)
 {
 	if (nGoingForward) mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(0, 0, -200) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 	if (nGoingBack) mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(0, 0, 200) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
@@ -732,13 +594,13 @@ void GSFrameListener::moveNinja(Ogre::Real timeSinceLastFrame)
 			mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(-200, 0, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 }
 
-bool GSFrameListener::quit(const CEGUI::EventArgs &e)
+bool PGFrameListener::quit(const CEGUI::EventArgs &e)
 {
     mShutDown = true;
 	return true;
 }
 
-bool GSFrameListener::nextLocation(void)
+bool PGFrameListener::nextLocation(void)
 {
 	// Get the new location for the robot to walk to
 
@@ -755,8 +617,196 @@ bool GSFrameListener::nextLocation(void)
 }
 
 // Update speed factors
-void GSFrameListener::UpdateSpeedFactor(double factor)
+void PGFrameListener::UpdateSpeedFactor(double factor)
 {
     mSpeedFactor = factor;
 	mCaelumSystem->getUniversalClock ()->setTimeScale (mPaused ? 0 : mSpeedFactor);
+}
+
+void PGFrameListener::spawnBox(void)
+{
+	Vector3 size = Vector3::ZERO;	// size of the box
+ 	// starting position of the box
+ 	Vector3 position = (mCamera->getDerivedPosition() + mCamera->getDerivedDirection().normalisedCopy() * 10);
+ 
+ 	// create an ordinary, Ogre mesh with texture
+ 	Entity *entity = mSceneMgr->createEntity(
+ 			"Box" + StringConverter::toString(mNumEntitiesInstanced),
+ 			"cube.mesh");			    
+ 	entity->setCastShadows(true);
+ 	// we need the bounding box of the box to be able to set the size of the Bullet-box
+ 	AxisAlignedBox boundingB = entity->getBoundingBox();
+ 	size = boundingB.getSize(); size /= 2.0f; // only the half needed
+ 	size *= 0.95f;	// Bullet margin is a bit bigger so we need a smaller size
+ 							// (Bullet 2.76 Physics SDK Manual page 18)
+ 	entity->setMaterialName("Examples/BumpyMetal");
+ 	SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+ 	node->attachObject(entity);
+ 	node->scale(0.05f, 0.05f, 0.05f);	// the cube is too big for us
+ 	size *= 0.05f;						// don't forget to scale down the Bullet-box too
+ 
+ 	// after that create the Bullet shape with the calculated size
+ 	OgreBulletCollisions::BoxCollisionShape *sceneBoxShape = new OgreBulletCollisions::BoxCollisionShape(size);
+ 	// and the Bullet rigid body
+ 	OgreBulletDynamics::RigidBody *defaultBody = new OgreBulletDynamics::RigidBody(
+ 			"defaultBoxRigid" + StringConverter::toString(mNumEntitiesInstanced), 
+ 			mWorld);
+ 	defaultBody->setShape(	node,
+ 				sceneBoxShape,
+ 				0.6f,			// dynamic body restitution
+ 				0.6f,			// dynamic body friction
+ 				1.0f, 			// dynamic bodymass
+ 				position,		// starting position of the box
+ 				Quaternion(0,0,0,1));// orientation of the box
+ 		mNumEntitiesInstanced++;				
+ 
+ 	defaultBody->setLinearVelocity(
+ 				mCamera->getDerivedDirection().normalisedCopy() * 7.0f ); // shooting speed
+ 	// push the created objects to the dequese
+ 	mShapes.push_back(sceneBoxShape);
+ 	mBodies.push_back(defaultBody);
+}
+
+void PGFrameListener::createBulletTerrain(void)
+{
+	// Create the bullet waterbed plane
+	OgreBulletCollisions::CollisionShape *Shape;
+	Shape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0,1,0), 0); // (normal vector, distance)
+	OgreBulletDynamics::RigidBody *defaultPlaneBody = new OgreBulletDynamics::RigidBody("BasePlane", mWorld);
+	defaultPlaneBody->setStaticShape(Shape, 0.1, 0.8, Ogre::Vector3(0, 10, 0));// (shape, restitution, friction)
+
+	// push the created objects to the deques
+	mShapes.push_back(Shape);
+	mBodies.push_back(defaultPlaneBody);
+
+	Ogre::ConfigFile config;
+	config.loadFromResourceSystem("Island.cfg", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, "=", true);
+
+	unsigned page_size = Ogre::StringConverter::parseUnsignedInt(config.getSetting( "PageSize" ));
+
+	Ogre::Vector3 terrainScale(Ogre::StringConverter::parseReal( config.getSetting( "PageWorldX" ) ) / (page_size-1),
+								Ogre::StringConverter::parseReal( config.getSetting( "MaxHeight" ) ),
+								Ogre::StringConverter::parseReal( config.getSetting( "PageWorldZ" ) ) / (page_size-1));
+
+	Ogre::String terrainfileName = config.getSetting( "Heightmap.image" );
+
+	float *heights = new float [page_size*page_size];
+
+	Ogre::Image terrainHeightMap;
+	terrainHeightMap.load(terrainfileName, Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME);
+        
+	for(unsigned y = 0; y < page_size; ++y)
+	{
+		for(unsigned x = 0; x < page_size; ++x)
+		{
+			Ogre::ColourValue color = terrainHeightMap.getColourAt(x, y, 0);
+			heights[x + y * page_size] = color.r;
+		}
+	}
+
+	mTerrainShape = new OgreBulletCollisions::HeightmapCollisionShape (
+		page_size, 
+		page_size, 
+		terrainScale, 
+		heights, 
+		true);
+
+	OgreBulletDynamics::RigidBody *defaultTerrainBody = new OgreBulletDynamics::RigidBody(
+		"Terrain", 
+		mWorld);
+
+	const float      terrainBodyRestitution  = 0.1f;
+	const float      terrainBodyFriction     = 0.8f;
+
+	Ogre::Vector3 terrainShiftPos( (terrainScale.x * (page_size - 1) / 2), \
+									0,
+									(terrainScale.z * (page_size - 1) / 2));
+
+	terrainShiftPos.y = terrainScale.y / 2 * terrainScale.y;
+
+	Ogre::SceneNode* pTerrainNode = mSceneMgr->getRootSceneNode ()->createChildSceneNode ();
+	defaultTerrainBody->setStaticShape (pTerrainNode, mTerrainShape, terrainBodyRestitution, terrainBodyFriction, terrainShiftPos);
+
+	mBodies.push_back(defaultTerrainBody);
+	mShapes.push_back(mTerrainShape);
+	
+ 	// Add Debug info display tool - creates a wire frame for the bullet objects
+	debugDrawer = new OgreBulletCollisions::DebugDrawer();
+	debugDrawer->setDrawWireframe(false);	// we want to see the Bullet containers
+	mWorld->setDebugDrawer(debugDrawer);
+	mWorld->setShowDebugShapes(false);	// enable it if you want to see the Bullet containers
+	showDebugOverlay(false);
+	SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode("debugDrawer", Ogre::Vector3::ZERO);
+	node->attachObject(static_cast <SimpleRenderable *> (debugDrawer));
+}
+
+void PGFrameListener::createRobot(void)
+{
+	// Create the robot
+    mEntity = mSceneMgr->createEntity("Robot", "robot.mesh");
+    mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", Ogre::Vector3(0.0f, 300.0f, 25.0f));
+    mNode->attachObject(mEntity);
+
+	// Create the walking list for the robot to walk
+    mWalkList.push_back(Ogre::Vector3(550.0f,  250.0f,  50.0f ));
+    mWalkList.push_back(Ogre::Vector3(-100.0f,  600.0f, -200.0f));
+
+	// Create the knots for the robot to walk between
+    Ogre::Entity *ent;
+    Ogre::SceneNode *knode;
+ 
+    ent = mSceneMgr->createEntity("Knot1", "knot.mesh");
+    knode = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot1Node",
+        Ogre::Vector3(0.0f, 290.0f,  25.0f));
+    knode->attachObject(ent);
+    knode->setScale(0.1f, 0.1f, 0.1f);
+ 
+    ent = mSceneMgr->createEntity("Knot2", "knot.mesh");
+    knode = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot2Node",
+        Ogre::Vector3(550.0f, 240.0f,  50.0f));
+    knode->attachObject(ent);
+    knode->setScale(0.1f, 0.1f, 0.1f);
+ 
+    ent = mSceneMgr->createEntity("Knot3", "knot.mesh");
+    knode = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot3Node",
+        Ogre::Vector3(-100.0f, 590.0f,-200.0f));
+    knode->attachObject(ent);
+    knode->setScale(0.1f, 0.1f, 0.1f);
+
+	// Set idle animation for the robot
+	mAnimationState = mSceneMgr->getEntity("Robot")->getAnimationState("Idle");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+
+	// Set default values for variables
+    mWalkSpeed = 35.0f;
+    mDirection = Ogre::Vector3::ZERO;
+}
+
+void PGFrameListener::createCaelumSystem(void)
+{
+	// Initialize the caelum day/night weather system
+	// Each on below corresponds to each element in the system
+    Caelum::CaelumSystem::CaelumComponent componentMask;
+	componentMask = static_cast<Caelum::CaelumSystem::CaelumComponent> (
+		Caelum::CaelumSystem::CAELUM_COMPONENT_SUN |				
+		Caelum::CaelumSystem::CAELUM_COMPONENT_MOON |
+		Caelum::CaelumSystem::CAELUM_COMPONENT_SKY_DOME |
+		Caelum::CaelumSystem::CAELUM_COMPONENT_IMAGE_STARFIELD |
+		Caelum::CaelumSystem::CAELUM_COMPONENT_POINT_STARFIELD |
+		Caelum::CaelumSystem::CAELUM_COMPONENT_CLOUDS |
+		0);
+	componentMask = Caelum::CaelumSystem::CAELUM_COMPONENTS_DEFAULT;
+    mCaelumSystem = new Caelum::CaelumSystem(Root::getSingletonPtr(), mSceneMgr, componentMask);
+
+    // Set time acceleration.
+	mCaelumSystem->setSceneFogDensityMultiplier(0.0008f); // or some other small value.
+	mCaelumSystem->setManageSceneFog(false);
+	mCaelumSystem->getUniversalClock()->setTimeScale (128); // This sets the timescale for the day/night system
+
+    // Register caelum as a listener.
+    mWindow->addListener(mCaelumSystem);
+	Root::getSingletonPtr()->addFrameListener(mCaelumSystem);
+
+    UpdateSpeedFactor(mCaelumSystem->getUniversalClock ()->getTimeScale ());
 }

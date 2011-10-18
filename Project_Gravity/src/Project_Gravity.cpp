@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Gravity_Shock::Gravity_Shock(void) : 
+Project_Gravity::Project_Gravity(void) : 
 	mTerrainGlobals(0),
     mTerrainGroup(0),
     mTerrainsImported(false),
@@ -13,12 +13,12 @@ Gravity_Shock::Gravity_Shock(void) :
 {
 }
 
-Gravity_Shock::~Gravity_Shock()
+Project_Gravity::~Project_Gravity()
 {
 	delete mRoot;
 }
  
-void Gravity_Shock::createCamera(void)
+void Project_Gravity::createCamera(void)
 {
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
@@ -32,7 +32,7 @@ void Gravity_Shock::createCamera(void)
     mCamera->setNearClipDistance(5);
 }
  
-bool Gravity_Shock::configure(void)
+bool Project_Gravity::configure(void)
 {
 	// Show the configuration dialog and initialise the system
  	if(mRoot->showConfigDialog())
@@ -53,7 +53,7 @@ bool Gravity_Shock::configure(void)
 	}
 }
  
-void Gravity_Shock::createScene(void)
+void Project_Gravity::createScene(void)
 {		
 	Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_ANISOTROPIC);
     Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(7);
@@ -94,7 +94,7 @@ void Gravity_Shock::createScene(void)
 
 	// Produce the island from the config file
 	mSceneMgr->setWorldGeometry("Island.cfg");
-		
+
 	// Adds depth so the water is darker the deeper you go
 	mHydrax->getMaterialManager()->addDepthTechnique(
 		static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName("Island"))
@@ -109,10 +109,10 @@ void Gravity_Shock::createScene(void)
 	this->createWindows();
 }
  
-void Gravity_Shock::createFrameListener(void)
+void Project_Gravity::createFrameListener(void)
 {
 	// Create the frame listener for keyboard and mouse inputs along with frame dependant processing
-	mFrameListener = new GSFrameListener( mSceneMgr, 
+	mFrameListener = new PGFrameListener( mSceneMgr, 
  								mWindow, 
  								mCamera,
 								Vector3(0,-9.81,0), // gravity vector for Bullet
@@ -123,7 +123,7 @@ void Gravity_Shock::createFrameListener(void)
     mRoot->addFrameListener(mFrameListener);
 }
 
-void Gravity_Shock::createViewports(void)
+void Project_Gravity::createViewports(void)
 {
     // Create one viewport, entire window
 	Viewport* vp = mWindow->addViewport(mCamera);
@@ -134,7 +134,7 @@ void Gravity_Shock::createViewports(void)
         Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
 }
 
-void Gravity_Shock::createWindows(void)
+void Project_Gravity::createWindows(void)
 {	
 	// Initializes CEGUI
 	mRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
@@ -157,7 +157,7 @@ void Gravity_Shock::createWindows(void)
 	sheet->addChildWindow(quit);
 	CEGUI::System::getSingleton().setGUISheet(sheet);
 	quit->subscribeEvent(CEGUI::PushButton::EventClicked, 
-		CEGUI::Event::Subscriber(&Gravity_Shock::quit, this));
+		CEGUI::Event::Subscriber(&Project_Gravity::quit, this));
 
 	// Create the window which uses render to texture technique
 	Ogre::TexturePtr tex = mRoot->getTextureManager()->createManual(
@@ -197,7 +197,7 @@ void Gravity_Shock::createWindows(void)
 	sheet->addChildWindow(si);
 }
 
-void Gravity_Shock::setupResources(void)
+void Project_Gravity::setupResources(void)
 {
     // Load resource paths from config file
     Ogre::ConfigFile cf;
@@ -222,12 +222,12 @@ void Gravity_Shock::setupResources(void)
     }
 }
 
-void Gravity_Shock::loadResources(void)
+void Project_Gravity::loadResources(void)
 {
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
-void Gravity_Shock::go(void)
+void Project_Gravity::go(void)
 {
 	// Setup resource file
 #ifdef _DEBUG
@@ -247,7 +247,7 @@ void Gravity_Shock::go(void)
     destroyScene();
 }
 
-bool Gravity_Shock::setup(void)
+bool Project_Gravity::setup(void)
 {
 	// Setup resources
     mRoot = new Ogre::Root(mPluginsCfg);
@@ -280,25 +280,24 @@ bool Gravity_Shock::setup(void)
 	return true;
 }
 
-void Gravity_Shock::destroyScene(void)
+void Project_Gravity::destroyScene(void)
 {
 }
 
-void Gravity_Shock::chooseSceneManager(void)
+void Project_Gravity::chooseSceneManager(void)
 {
     // Get the SceneManager, in this case a generic one
     mSceneMgr = mRoot->createSceneManager("TerrainSceneManager");
 }
 
-void Gravity_Shock::createResourceListener(void)
+void Project_Gravity::createResourceListener(void)
 {
 
 }
 
-bool Gravity_Shock::quit(const CEGUI::EventArgs &e)
+bool Project_Gravity::quit(const CEGUI::EventArgs &e)
 {
 	// Quit the frame listener and therefore game
 	mFrameListener->quit(e);
 	return true;
 }
-

@@ -122,21 +122,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\Project_Gravity.h" />
-    <ClInclude Include="include\PGFrameListener.h" />
-    <ClInclude Include="include\stdafx.h" />
-    <ClInclude Include="res\Resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Project_Gravity.cpp" />
-    <ClCompile Include="src\PGFrameListener.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.png" />
     <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.tga" />
     <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\IslandNH.tga" />
@@ -150,6 +135,21 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\Project_Gravity.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PGFrameListener.h" />
+    <ClInclude Include="include\Project_Gravity.h" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="res\Resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\PGFrameListener.cpp" />
+    <ClCompile Include="src\Project_Gravity.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
