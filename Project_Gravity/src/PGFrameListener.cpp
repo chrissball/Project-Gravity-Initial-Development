@@ -65,6 +65,7 @@ PGFrameListener::PGFrameListener (
 
 	// Create the day/night system
 	createCaelumSystem();
+	mCaelumSystem->getSun()->setSpecularMultiplier(Ogre::ColourValue(0.3, 0.3, 0.3));
 }
 
 PGFrameListener::~PGFrameListener()
@@ -127,7 +128,7 @@ bool PGFrameListener::frameStarted(const FrameEvent& evt)
 	// Move the sun
 	Ogre::Vector3 sunPosition = mCamera->getDerivedPosition();
 	sunPosition -= mCaelumSystem->getSun()->getLightDirection() * 80000;
-
+	
 	mHydrax->setSunPosition(sunPosition);
 	mHydrax->setSunColor(Ogre::Vector3(mCaelumSystem->getSun()->getBodyColour().r,
 		mCaelumSystem->getSun()->getBodyColour().g,
@@ -136,7 +137,7 @@ bool PGFrameListener::frameStarted(const FrameEvent& evt)
 	
 	// Update Hydrax
     mHydrax->update(evt.timeSinceLastFrame);
-
+	
  	(void)evt;
  
  	mWorld->stepSimulation(evt.timeSinceLastFrame);	// update Bullet Physics animation
@@ -244,7 +245,6 @@ bool PGFrameListener::keyReleased(const OIS::KeyEvent &evt)
 
 bool PGFrameListener::mouseMoved( const OIS::MouseEvent &evt )
 {
-
 	if (freeRoam) // freeroam is the in game camera movement
 	{
 		mCamera->yaw(Ogre::Degree(-evt.state.X.rel * 0.15f));
@@ -307,7 +307,7 @@ bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButton
  
         mLMouseDown = true;
     } 
-	else if (id == OIS::MB_Middle) // The right mouse button toggles freeroam or pause
+	else if (id == OIS::MB_Right) // The right mouse button toggles freeroam or pause
 	{
 		freeRoam = !freeRoam;
 
@@ -360,7 +360,7 @@ CEGUI::MouseButton PGFrameListener::convertButton(OIS::MouseButtonID buttonID)
 bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
 	// Ensures the sun is not too reflective on the island
-	mCaelumSystem->getSun()->setSpecularMultiplier(Ogre::ColourValue(0.3, 0.3, 0.3));
+	//mCaelumSystem->getSun()->setSpecularMultiplier(Ogre::ColourValue(0.3, 0.3, 0.3));
 
 	// Setup the scene query
     Ogre::Vector3 camPos = mCamera->getPosition();
@@ -798,6 +798,7 @@ void PGFrameListener::createCaelumSystem(void)
 		0);
 	componentMask = Caelum::CaelumSystem::CAELUM_COMPONENTS_DEFAULT;
     mCaelumSystem = new Caelum::CaelumSystem(Root::getSingletonPtr(), mSceneMgr, componentMask);
+	((Caelum::SpriteSun*) mCaelumSystem->getSun())->setSunTextureAngularSize(Ogre::Degree(6.0f));
 
     // Set time acceleration.
 	mCaelumSystem->setSceneFogDensityMultiplier(0.0008f); // or some other small value.

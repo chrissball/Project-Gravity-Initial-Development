@@ -122,14 +122,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.png" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\IslandNH.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Palm.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Sand.png" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Sand.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\SandGrass.png" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\SandGrass.tga" />
     <None Include="docs\ReadMe.txt" />
     <None Include="res\Project_Gravity.ico" />
   </ItemGroup>

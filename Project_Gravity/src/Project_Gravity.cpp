@@ -31,7 +31,7 @@ void Project_Gravity::createCamera(void)
 	mCamera->setDirection(Ogre::Vector3(0.333, 0.071, -0.953));
     mCamera->setNearClipDistance(5);
 }
- 
+
 bool Project_Gravity::configure(void)
 {
 	// Show the configuration dialog and initialise the system
@@ -39,12 +39,13 @@ bool Project_Gravity::configure(void)
 	{
 		// If returned true, user clicked OK so initialise
 		// Here we choose to let the system create a default rendering window by passing 'true'
-		mWindow = mRoot->initialise(true, "Gravity Shock");
+		mWindow = mRoot->initialise(true, "Project Gravity");
  		// Let's add a nice window icon
  		HWND hwnd;
  		mWindow->getCustomAttribute("WINDOW", (void*)&hwnd);
  		LONG iconID   = (LONG)LoadIcon( GetModuleHandle(0), MAKEINTRESOURCE(IDI_APPICON) );
  		SetClassLong( hwnd, GCL_HICON, iconID );
+		cout << "loading" << endl;
 		return true;
 	}
 	else
@@ -81,7 +82,7 @@ void Project_Gravity::createScene(void)
 											// Normal mode
 											Hydrax::MaterialManager::NM_VERTEX,
 											// Projected grid options
-											Hydrax::Module::ProjectedGrid::Options(/*264 /*Generic one*/));
+											Hydrax::Module::ProjectedGrid::Options(/*264 Generic one*/));
 
 	// Set our module
 	mHydrax->setModule(static_cast<Hydrax::Module::Module*>(mModule));
@@ -104,7 +105,7 @@ void Project_Gravity::createScene(void)
 	std::vector<Ogre::RenderQueueGroupID> caelumskyqueue;
 	caelumskyqueue.push_back(static_cast<Ogre::RenderQueueGroupID>(Ogre::RENDER_QUEUE_SKIES_EARLY + 2));
 	mHydrax->getRttManager()->setDisableReflectionCustomNearCliplPlaneRenderQueues (caelumskyqueue);
-
+	
 	// Initializes the second camera window in the top right
 	this->createWindows();
 }
@@ -143,17 +144,20 @@ void Project_Gravity::createWindows(void)
 	CEGUI::Scheme::setDefaultResourceGroup("Schemes");
 	CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
 	CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
-	CEGUI::SchemeManager::getSingleton().create("TaharezLook.scheme");
-	CEGUI::System::getSingleton().setDefaultMouseCursor("TaharezLook", "MouseArrow");
+	CEGUI::SchemeManager::getSingleton().create("WindowsLook.scheme");
+	CEGUI::System::getSingleton().setDefaultMouseCursor("WindowsLook", "MouseArrow");
+	CEGUI::FontManager::getSingleton().create("DejaVuSans-10.font");
+	CEGUI::System::getSingleton().setDefaultFont("DejaVuSans-10");
 
 	// Create themed window
 	CEGUI::WindowManager  &wmgr = CEGUI::WindowManager::getSingleton();
 	CEGUI::Window *sheet = wmgr.createWindow("DefaultWindow", "CEGUIDemo/Sheet");
 
 	// Create quit button
-	CEGUI::Window *quit = wmgr.createWindow("TaharezLook/Button", "CEGUIDemo/QuitButton");
-	quit->setText("Quit");
+	CEGUI::Window *quit = wmgr.createWindow("WindowsLook/Button", "CEGUIDemo/QuitButton");
 	quit->setSize(CEGUI::UVector2(CEGUI::UDim(0.15, 0), CEGUI::UDim(0.05, 0)));
+	quit->setText("Quit");
+	//quit->setFont("DejaVuSans");
 	sheet->addChildWindow(quit);
 	CEGUI::System::getSingleton().setGUISheet(sheet);
 	quit->subscribeEvent(CEGUI::PushButton::EventClicked, 
@@ -189,7 +193,7 @@ void Project_Gravity::createWindows(void)
 									 guiTex.getSize().d_height),
 						 CEGUI::Point(0.0f, 0.0f));
 
-	CEGUI::Window *si = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticImage", "RTTWindow");
+	CEGUI::Window *si = CEGUI::WindowManager::getSingleton().createWindow("WindowsLook/StaticImage", "RTTWindow");
 	si->setSize(CEGUI::UVector2(CEGUI::UDim(0.25f, 0), CEGUI::UDim(0.2f, 0)));
 	si->setPosition(CEGUI::UVector2(CEGUI::UDim(0.75f, 0), CEGUI::UDim(0.0f, 0)));
 	si->setProperty("Image", CEGUI::PropertyHelper::imageToString(&imageSet.getImage("RTTImage")));
@@ -262,6 +266,12 @@ bool Project_Gravity::setup(void)
     createCamera();
     createViewports();
 
+	/*Ogre::TextAreaOverlayElement* loading;
+	loading->initialise();
+	loading->setCaption("LOADING...");
+	loading->setColour(Ogre::ColourValue::White);
+	loading->show();
+	*/
     // Set default mipmap level (NB some APIs ignore this)
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 

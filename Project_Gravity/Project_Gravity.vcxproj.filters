@@ -19,20 +19,6 @@
     <None Include="res\Project_Gravity.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Island.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\IslandNH.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Palm.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Sand.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\Sand.tga" />
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\SandGrass.png">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\..\..\..\..\ogre\hydrax\Hydrax-v0.5.1\Demo1\media\materials\textures\SandGrass.tga" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\Project_Gravity.rc">
