@@ -105,7 +105,6 @@ PGFrameListener::~PGFrameListener()
 bool PGFrameListener::frameStarted(const FrameEvent& evt)
 {
 	// Check camera height and make sure it doesnt go through island
-	// NEEDS TO BE UPDATED SO THE CAMERA STAYS ON THE GROUND
 	Ogre::RaySceneQuery *raySceneQuery = 
 		mSceneMgr->
 			    createRayQuery(Ogre::Ray(mCamera->getPosition() + Ogre::Vector3(0,1000000,0), 
@@ -114,11 +113,28 @@ bool PGFrameListener::frameStarted(const FrameEvent& evt)
     Ogre::RaySceneQueryResult::iterator i = qryResult.begin();
     if (i != qryResult.end() && i->worldFragment)
     {
+		//Prevents flying or diving camera
 		if (mCamera->getPosition().y < i->worldFragment->singleIntersection.y + 30)
 		{
             mCamera->
 				    setPosition(mCamera->getPosition().x, 
                                 i->worldFragment->singleIntersection.y + 30, 
+                                mCamera->getPosition().z);
+		}
+		else if (mCamera->getPosition().y > i->worldFragment->singleIntersection.y + 30)
+		{
+            mCamera->
+				    setPosition(mCamera->getPosition().x, 
+                                i->worldFragment->singleIntersection.y + 30, 
+                                mCamera->getPosition().z);
+			
+		}
+		//Allow for swimming (non-underwater)
+		if (floor(mCamera->getPosition().y) < 110)
+		{
+            mCamera->
+				    setPosition(mCamera->getPosition().x, 
+                                110, 
                                 mCamera->getPosition().z);
 		}
     }
@@ -289,7 +305,7 @@ bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButton
         Ogre::Ray mouseRay = mCamera->getCameraToViewportRay(mousePos.d_x/float(evt.state.width), 
 															mousePos.d_y/float(evt.state.height));
         mRaySceneQuery->setRay(mouseRay);
-
+		
 		// Execute query
         Ogre::RaySceneQueryResult &result = mRaySceneQuery->execute();
         Ogre::RaySceneQueryResult::iterator itr = result.begin( );
