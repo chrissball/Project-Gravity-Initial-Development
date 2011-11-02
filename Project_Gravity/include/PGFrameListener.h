@@ -64,6 +64,18 @@ private:
 	bool nGoingDown;
 	bool nYaw;
 
+	//JESS
+	OgreBulletDynamics::RigidBody *mPickedBody;
+	Ogre::Vector3 mOldPickingPos;
+    Ogre::Vector3 mOldPickingDist;
+	OgreBulletDynamics::TypedConstraint *mPickConstraint;
+	OgreBulletCollisions::CollisionClosestRayResultCallback *mCollisionClosestRayResultCallback;
+	ManualObject* myManualObject;
+	SceneNode* myManualObjectNode;
+	MaterialPtr myManualObjectMaterial;
+
+
+
 	Ogre::Vector3 transVector;
 	
     Ogre::Entity *mEntity;                 // The Entity we are animating
