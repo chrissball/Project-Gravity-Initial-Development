@@ -28,6 +28,23 @@ PGFrameListener::PGFrameListener (
     windowHndStr << windowHnd;
     pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
 
+
+
+	//Jess Initialising OgreBulletInputListener
+	mCollisionClosestRayResultCallback = NULL;
+	//mInputListener = new OgreBulletInputListener(, mWindow);
+	myManualObject =  mSceneMgr->createManualObject("manual1"); 
+	myManualObjectNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("manual1_node"); 
+ 
+	myManualObjectMaterial = MaterialManager::getSingleton().create("manual1Material","debugger"); 
+	myManualObjectMaterial->setReceiveShadows(false); 
+	myManualObjectMaterial->getTechnique(0)->setLightingEnabled(true); 
+	myManualObjectMaterial->getTechnique(0)->getPass(0)->setDiffuse(1,0,0,0); 
+	myManualObjectMaterial->getTechnique(0)->getPass(0)->setAmbient(1,0,0); 
+	myManualObjectMaterial->getTechnique(0)->getPass(0)->setSelfIllumination(1,0,0);
+	myManualObjectNode->attachObject(myManualObject);
+
+	
 	// Initialize input system
     mInputManager = OIS::InputManager::createInputSystem( pl );
     mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
@@ -297,8 +314,116 @@ bool PGFrameListener::mouseMoved( const OIS::MouseEvent &evt )
 
 bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
 {
+	std::cout << ("mousepressed") << std::endl;
+	// pick a body and try to drag it.
+    Ogre::Vector3 pickPos;
+    Ogre::Ray rayTo;
+	OgreBulletDynamics::RigidBody * body = NULL;
+	CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
+
+	//rayTo = mCamera->getCameraToViewportRay(mCamera->getPosition().x, mCamera->getPosition().y);
+	//rayTo = new Ogre::Ray(mCamera->getPosition());
+	rayTo = mCamera->getCameraToViewportRay (mousePos.d_x/mWindow->getWidth(), mousePos.d_y/mWindow->getHeight());
+	//rayTo = mCamera->getCameraToViewportRay (mInputListener->getAbsMouseX(), mInputListener->getAbsMouseY());
+	
+	std::cout << "rayFrom.." << "(" << rayTo.getOrigin().x << ", " << rayTo.getOrigin().y << ", " << rayTo.getOrigin().z << ")" << std::endl;
+	std::cout << "CamFrom.." << "(" << mCamera->getPosition().x << ", " << mCamera->getPosition().y << ", " << mCamera->getPosition().z << ")" << std::endl;
+	std::cout << "World: " << mWorld << std::endl;
+	std::cout << "clip: " << mCamera->getFarClipDistance() << std::endl;
+
+	if(mCollisionClosestRayResultCallback != NULL) {
+		std::cout << "deleting!" << std::endl;
+		delete mCollisionClosestRayResultCallback;
+		std::cout << "deleted!" << std::endl;
+	} else {
+		std::cout << "no delete necessary!" << std::endl;
+	}
+
+	mCollisionClosestRayResultCallback = new OgreBulletCollisions::CollisionClosestRayResultCallback(rayTo, mWorld, mCamera->getFarClipDistance());
+
+	std::cout << "Method called" << std::endl;
+	std::cout << "rayTo.." << "(" << mCollisionClosestRayResultCallback->getRayEndPoint().x << ", " << mCollisionClosestRayResultCallback->getRayEndPoint().y << ", " << mCollisionClosestRayResultCallback->getRayEndPoint().z << ")" << std::endl;
+
+	std::cout << ("launchRay...") << std::endl;
+
+    mWorld->launchRay (*mCollisionClosestRayResultCallback);
+
+	std::cout << "Launched!" << std::endl;
+
+
+	myManualObjectNode->detachObject(myManualObject);
+	myManualObject->begin("manual1Material", Ogre::RenderOperation::OT_LINE_LIST); 
+	//myManualObject->position(rayTo.getOrigin().x, rayTo.getOrigin().y, rayTo.getOrigin().z); 
+	//myManualObject->position(mCamera->getPosition().x, mCamera->getPosition().y, mCamera->getPosition().z); 
+	myManualObject->position(rayTo.getOrigin().x, rayTo.getOrigin().y, rayTo.getOrigin().z); 
+	myManualObject->position(mCollisionClosestRayResultCallback->getRayEndPoint().x, mCollisionClosestRayResultCallback->getRayEndPoint().y, mCollisionClosestRayResultCallback->getRayEndPoint().z); 
+	//myManualObject->position(mCollisionClosestRayResultCallback->getRayEndPoint().x, mCollisionClosestRayResultCallback->getRayEndPoint().y, mCollisionClosestRayResultCallback->getRayEndPoint().z); 
+	// etc 
+	myManualObject->end(); 
+ 
+	myManualObjectNode->attachObject(myManualObject);
+
+
+
+    if (mCollisionClosestRayResultCallback->doesCollide ())
+    {
+		std::cout << "Collision found" << std::endl;
+        body = static_cast <OgreBulletDynamics::RigidBody *> 
+            (mCollisionClosestRayResultCallback->getCollidedObject());
+		
+		pickPos = mCollisionClosestRayResultCallback->getCollisionPoint ();
+        std::cout << body->getName() << std::endl;
+	} else {
+		 std::cout << "No collisions found" << std::endl;
+	}
+
+
+
+    if (body != NULL)
+    {  
+		std::cout << "if (body)" << std::endl;
+        //other exclusions?
+        if (!(body->isStaticObject() 
+            //|| body->isKinematicObject()
+            ))
+        {
+            mPickedBody = body;
+            mPickedBody->disableDeactivation();		
+            const Ogre::Vector3 localPivot (body->getCenterOfMassPivot(pickPos));
+            OgreBulletDynamics::PointToPointConstraint *p2pConstraint  = new OgreBulletDynamics::PointToPointConstraint(body, localPivot);
+
+            mWorld->addConstraint(p2pConstraint);					    
+
+            //save mouse position for dragging
+            mOldPickingPos = pickPos;
+            const Ogre::Vector3 eyePos(mCamera->getDerivedPosition());
+            mOldPickingDist  = (pickPos - eyePos).length();
+
+            //very weak constraint for picking
+            p2pConstraint->setTau (0.1f);
+            mPickConstraint = p2pConstraint;
+
+
+        }
+        //getDebugLines();
+        //mDebugRayLine->addLine (rayTo.getOrigin(), pickPos);
+        //mDebugRayLine->draw();
+    } else {
+		std::cout << "Else (body)" << std::endl;
+	}
+
+    //if (mGuiListener->getGui()->injectMouse(mInputListener->getAbsMouseX ()*mWindow->getWidth(), 
+    //    mInputListener->getAbsMouseY ()*mWindow->getHeight(), true))
+    //{
+    //    mGuiListener->hideMouse();
+    //}
+    //else
+    //{
+    //    mGuiListener->showMouse ();
+    //}
+
 	// Left mouse button down spawns a robot
-	if (id == OIS::MB_Left)
+	/*if (id == OIS::MB_Left)
 	{
 		// Setup the ray scene query, use CEGUI's mouse position
         CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
@@ -334,12 +459,34 @@ bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButton
 			CEGUI::MouseCursor::getSingleton().setPosition(CEGUI::Point(400, 300));
 			CEGUI::MouseCursor::getSingleton().setVisible(true);
 		}
-	}
+	}*/
 
 	// This is for the pause menu interface
     CEGUI::System::getSingleton().injectMouseButtonDown(convertButton(id));
     return true;
 }
+
+
+//OgreBulletDynamics::RigidBody* getBodyUnderCursorUsingBullet(Ogre::Vector3 &intersectionPoint, Ray &rayTo)
+//{
+	//OgreBulletDynamics::RigidBody
+    /*rayTo = mCamera->getCameraToViewportRay (mInputListener->getAbsMouseX(), mInputListener->getAbsMouseY());
+
+	delete mCollisionClosestRayResultCallback;
+	mCollisionClosestRayResultCallback = new CollisionClosestRayResultCallback(rayTo, mWorld, mCamera->getFarClipDistance());
+
+    mWorld->launchRay (*mCollisionClosestRayResultCallback);
+    if (mCollisionClosestRayResultCallback->doesCollide ())
+    {
+        OgreBulletDynamics::RigidBody * body = static_cast <OgreBulletDynamics::RigidBody *> 
+            (mCollisionClosestRayResultCallback->getCollidedObject());
+		
+		intersectionPoint = mCollisionClosestRayResultCallback->getCollisionPoint ();
+        setDebugText("Hit :" + body->getName());
+        return body;
+    }*/
+//    return 0;
+//}
 
 bool PGFrameListener::mouseReleased( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
 {
