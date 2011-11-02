@@ -1,0 +1,24 @@
+09:55:50: Creating resource group General
+09:55:50: Creating resource group Internal
+09:55:50: Creating resource group Autodetect
+09:55:50: Registering ResourceManager for type Material
+09:55:50: Registering ResourceManager for type Skeleton
+09:55:50: Registering ResourceManager for type Mesh
+09:55:50: MeshSerializer writing mesh data to Icosphere.mesh...
+09:55:50: File header written.
+09:55:50: Writing mesh data...
+09:55:50: Writing submesh...
+09:55:50: Exporting submesh texture aliases...
+09:55:50: Submesh texture aliases exported.
+09:55:50: Submesh exported.
+09:55:50: Exporting bounds information....
+09:55:50: Bounds information exported.
+09:55:50: Exporting submesh name table...
+09:55:50: Submesh name table exported.
+09:55:50: Exporting edge lists...
+09:55:50: Edge lists exported
+09:55:50: Mesh data exported.
+09:55:50: MeshSerializer export successful.
+09:55:50: Unregistering ResourceManager for type Mesh
+09:55:50: Unregistering ResourceManager for type Skeleton
+09:55:50: Unregistering ResourceManager for type Material

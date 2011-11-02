@@ -60,14 +60,10 @@ void Project_Gravity::createScene(void)
     Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(7);
  
 	// Set ambiant lighting
+
+
+
     mSceneMgr->setAmbientLight(Ogre::ColourValue(1, 1, 1));
-
-	// Create ninja
-	Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
-	ninjaNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode");
-	ninjaNode->attachObject(ninjaEntity);
-	ninjaNode->setPosition(0, 300, -200);
-
 	// Create Hydrax ocean
 	mHydrax = new Hydrax::Hydrax(mSceneMgr, mCamera, mWindow->getViewport(0));
 
@@ -108,6 +104,14 @@ void Project_Gravity::createScene(void)
 	
 	// Initializes the second camera window in the top right
 	this->createWindows();
+
+		// Create fish
+	Ogre::Entity* fishEntity = mSceneMgr->createEntity("fish", "Icosphere.mesh");
+	fishNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("fishNode");
+	fishNode->attachObject(fishEntity);
+	fishNode->setPosition(Ogre::Vector3(568, 155, 2880));
+	fishNode->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	mCamera->lookAt(fishNode->getPosition());
 }
  
 void Project_Gravity::createFrameListener(void)

@@ -166,7 +166,7 @@ bool PGFrameListener::keyPressed(const OIS::KeyEvent& evt)
 	else if (evt.key == OIS::KC_PGUP) mGoingUp = true;
 	else if (evt.key == OIS::KC_PGDOWN) mGoingDown = true;
 	else if (evt.key == OIS::KC_LSHIFT) mFastMove = true;
-	else if (evt.key == OIS::KC_I) nGoingForward = true; // nVariables for ninja movement
+	else if (evt.key == OIS::KC_I) nGoingForward = true; // nVariables for fish movement
 	else if (evt.key == OIS::KC_K) nGoingBack = true;
 	else if (evt.key == OIS::KC_J) nGoingLeft = true;
 	else if (evt.key == OIS::KC_L) nGoingRight = true;
@@ -229,7 +229,7 @@ bool PGFrameListener::keyReleased(const OIS::KeyEvent &evt)
 	else if (evt.key == OIS::KC_PGUP) mGoingUp = false;
 	else if (evt.key == OIS::KC_PGDOWN) mGoingDown = false;
 	else if (evt.key == OIS::KC_LSHIFT) mFastMove = false;
-	else if (evt.key == OIS::KC_I) nGoingForward = false; // nVariables for ninja movement
+	else if (evt.key == OIS::KC_I) nGoingForward = false; // nVariables for fish movement
 	else if (evt.key == OIS::KC_K) nGoingBack = false;
 	else if (evt.key == OIS::KC_J) nGoingLeft = false;
 	else if (evt.key == OIS::KC_L) nGoingRight = false;
@@ -451,7 +451,7 @@ bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
     mMouse->capture();
 
 	moveCamera(evt.timeSinceLastFrame);
-	moveNinja(evt.timeSinceLastFrame);
+	movefish(evt.timeSinceLastFrame);
 
 	// So that the caelum system is updated for both cameras
 	mCaelumSystem->notifyCameraChanged(mSceneMgr->getCamera("PlayerCam"));
@@ -574,24 +574,24 @@ void PGFrameListener::showDebugOverlay(bool show)
 	}
 }
 
-void PGFrameListener::moveNinja(Ogre::Real timeSinceLastFrame)
+void PGFrameListener::movefish(Ogre::Real timeSinceLastFrame)
 {
-	if (nGoingForward) mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(0, 0, -200) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
-	if (nGoingBack) mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(0, 0, 200) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
-	if (nGoingUp) mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(0, 200, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
-	if (nGoingDown) mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(0, -200, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+	/*if (nGoingForward) mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(0, 0, -200) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+	if (nGoingBack) mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(0, 0, 200) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+	if (nGoingUp) mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(0, 200, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+	if (nGoingDown) mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(0, -200, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 
 	if (nGoingRight)
-		if (nYaw)
-			mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Degree(-1.3 * 100) * timeSinceLastFrame);
-		else
-			mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(200, 0, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+		if (nYaw)*/
+			mSceneMgr->getSceneNode("fishNode")->roll(Ogre::Degree(-1.3 * 100) * timeSinceLastFrame);
+	/*	else
+			mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(200, 0, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 
 	if (nGoingLeft)
 		if (nYaw)
-			mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Degree(1.3 * 100) * timeSinceLastFrame);
+			mSceneMgr->getSceneNode("fishNode")->roll(Ogre::Degree(1.3 * 100) * timeSinceLastFrame);
 		else
-			mSceneMgr->getSceneNode("NinjaNode")->translate(Ogre::Vector3(-200, 0, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+			mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(-200, 0, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);*/
 }
 
 bool PGFrameListener::quit(const CEGUI::EventArgs &e)
@@ -632,18 +632,17 @@ void PGFrameListener::spawnBox(void)
  	// create an ordinary, Ogre mesh with texture
  	Entity *entity = mSceneMgr->createEntity(
  			"Box" + StringConverter::toString(mNumEntitiesInstanced),
- 			"cube.mesh");			    
+ 			"Icosphere.mesh");			    
  	entity->setCastShadows(true);
+	
  	// we need the bounding box of the box to be able to set the size of the Bullet-box
  	AxisAlignedBox boundingB = entity->getBoundingBox();
  	size = boundingB.getSize(); size /= 2.0f; // only the half needed
  	size *= 0.95f;	// Bullet margin is a bit bigger so we need a smaller size
  							// (Bullet 2.76 Physics SDK Manual page 18)
- 	entity->setMaterialName("Examples/BumpyMetal");
+ 	
  	SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
  	node->attachObject(entity);
- 	node->scale(0.05f, 0.05f, 0.05f);	// the cube is too big for us
- 	size *= 0.05f;						// don't forget to scale down the Bullet-box too
  
  	// after that create the Bullet shape with the calculated size
  	OgreBulletCollisions::BoxCollisionShape *sceneBoxShape = new OgreBulletCollisions::BoxCollisionShape(size);
@@ -655,7 +654,7 @@ void PGFrameListener::spawnBox(void)
  				sceneBoxShape,
  				0.6f,			// dynamic body restitution
  				0.6f,			// dynamic body friction
- 				1.0f, 			// dynamic bodymass
+ 				5.0f, 			// dynamic bodymass
  				position,		// starting position of the box
  				Quaternion(0,0,0,1));// orientation of the box
  		mNumEntitiesInstanced++;				

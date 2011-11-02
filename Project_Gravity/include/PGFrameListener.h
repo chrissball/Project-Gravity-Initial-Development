@@ -55,7 +55,7 @@ private:
 	bool mGoingDown;
 	bool mFastMove;
 	
-	//Ninja controls
+	//fish controls
 	bool nGoingForward;
 	bool nGoingBack;
 	bool nGoingLeft;
@@ -122,7 +122,7 @@ public:
 	void windowClosed(Ogre::RenderWindow* rw);
 	void moveCamera(Ogre::Real timeSinceLastFrame);
 	void showDebugOverlay(bool show);
-	void moveNinja(Ogre::Real timeSinceLastFrame);
+	void movefish(Ogre::Real timeSinceLastFrame);
 	CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID);
     bool quit(const CEGUI::EventArgs &e);
     bool nextLocation(void);

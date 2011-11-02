@@ -44,7 +44,7 @@ private:
     bool mTerrainsImported;
  
 	CEGUI::OgreRenderer* mRenderer;
-	Ogre::SceneNode *ninjaNode;
+	Ogre::SceneNode *fishNode;
 
 	// Hydrax pointer
 	Hydrax::Hydrax *mHydrax;
