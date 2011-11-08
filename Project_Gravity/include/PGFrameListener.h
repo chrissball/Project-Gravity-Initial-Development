@@ -64,7 +64,7 @@ private:
 	bool nGoingDown;
 	bool nYaw;
 
-	//JESS
+	//Required for ray casting
 	OgreBulletDynamics::RigidBody *mPickedBody;
 	Ogre::Vector3 mOldPickingPos;
     Ogre::Vector3 mOldPickingDist;
