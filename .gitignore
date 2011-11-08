@@ -1,0 +1,16 @@
+# Compiled source #
+###################
+*.lib
+*.exe
+*.exp
+*.obj
+
+*.vcxproj
+*.sdf
+*.opensdf
+*.pch
+
+# Logs #
+######################
+*.log
+*.tlog
