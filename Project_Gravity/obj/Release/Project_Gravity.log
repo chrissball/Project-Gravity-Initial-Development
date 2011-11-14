@@ -1,25 +1,47 @@
-﻿Build started 26/10/2011 16:04:24.
-     1>Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" on node 2 (build target(s)).
+﻿Build started 14/11/2011 22:51:42.
+     1>Project "F:\Jess\My Documents\Warwick\Year 4\4YP\Project\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "obj\Release\Project_Gravity.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         All outputs are up-to-date.
-         All outputs are up-to-date.
+         P:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"P:\Program Files (x86)\Ogre\include\OGRE" /Iinclude /I"P:\Program Files (x86)\Ogre\Samples\Common\include" /I"P:\Program Files (x86)\Ogre\caelum\main\include" /I"P:\Program Files (x86)\Ogre\hydrax\Hydrax-v0.5.1\Hydrax\src" /I"P:\Program Files (x86)\cegui\cegui\include" /I"P:\Program Files (x86)\bullet\src" /I"P:\Program Files (x86)\ogrebullet\Dynamics\include" /I"P:\Program Files (x86)\ogrebullet\Collisions\include" /I"P:\Program Files (x86)\Ogre\include\OIS" /I"P:\Program Files (x86)\Ogre\include" /I"P:\Program Files (x86)\Ogre\boost_1_42" /I"P:\Program Files (x86)\ogrebullet\Demos\include" /Zi /nologo /W3 /WX- /O2 /Ob1 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /GF /Gm /EHsc /MD /GS- /Gy /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yc"StdAfx.h" /Fp"obj\Release\Project_Gravity.pch" /Fo"obj\Release\\" /Fd"obj\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\stdafx.cpp /Zm200 
+         stdafx.cpp
+     1>p:\program files (x86)\ogre\include\ogre\ExampleFrameListener.h(343): warning C4244: '+=' : conversion from 'double' to 'Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogre\include\ogre\ExampleFrameListener.h(344): warning C4244: '-=' : conversion from 'double' to 'Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogre\include\ogre\ExampleFrameListener.h(348): warning C4244: 'argument' : conversion from 'double' to 'Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogre\include\ogre\ExampleFrameListener.h(349): warning C4244: 'argument' : conversion from 'double' to 'Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogre\include\ogre\ExampleFrameListener.h(454): warning C4244: '-=' : conversion from 'double' to 'Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogrebullet\demos\include\BetaGUI.h(157): warning C4244: 'argument' : conversion from 'const int' to 'const Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogrebullet\demos\include\BetaGUI.h(157): warning C4244: 'argument' : conversion from 'const int' to 'const Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogrebullet\demos\include\BetaGUI.h(158): warning C4244: 'argument' : conversion from 'const int' to 'const Ogre::Real', possible loss of data
+     1>p:\program files (x86)\ogrebullet\demos\include\BetaGUI.h(158): warning C4244: 'argument' : conversion from 'const int' to 'const Ogre::Real', possible loss of data
+         P:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"P:\Program Files (x86)\Ogre\include\OGRE" /Iinclude /I"P:\Program Files (x86)\Ogre\Samples\Common\include" /I"P:\Program Files (x86)\Ogre\caelum\main\include" /I"P:\Program Files (x86)\Ogre\hydrax\Hydrax-v0.5.1\Hydrax\src" /I"P:\Program Files (x86)\cegui\cegui\include" /I"P:\Program Files (x86)\bullet\src" /I"P:\Program Files (x86)\ogrebullet\Dynamics\include" /I"P:\Program Files (x86)\ogrebullet\Collisions\include" /I"P:\Program Files (x86)\Ogre\include\OIS" /I"P:\Program Files (x86)\Ogre\include" /I"P:\Program Files (x86)\Ogre\boost_1_42" /I"P:\Program Files (x86)\ogrebullet\Demos\include" /Zi /nologo /W3 /WX- /O2 /Ob1 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /GF /Gm /EHsc /MD /GS- /Gy /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yu"StdAfx.h" /Fp"obj\Release\Project_Gravity.pch" /Fo"obj\Release\\" /Fd"obj\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\Main.cpp src\PGFrameListener.cpp src\Project_Gravity.cpp /Zm200 
+         Project_Gravity.cpp
+         PGFrameListener.cpp
+         Main.cpp
        ResourceCompile:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"obj\Release\Project_Gravity.res" res\Project_Gravity.rc 
        Link:
-         All outputs are up-to-date.
-         Project_Gravity.vcxproj -> C:\Users\FloobieG\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.exe
+         P:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\Release\\Project_Gravity.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"P:\Program Files (x86)\Ogre\caelum\lib\release" /LIBPATH:"P:\Program Files (x86)\Ogre\hydrax\Hydrax-v0.5.1\Hydrax\bin\release" /LIBPATH:"P:\Program Files (x86)\ogrebullet\lib\Release" /LIBPATH:"P:\Program Files (x86)\Ogre\lib\release" /LIBPATH:"P:\Program Files (x86)\Ogre\boost_1_42\lib" /LIBPATH:"P:\Program Files (x86)\cegui\lib" /LIBPATH:"P:\Program Files (x86)\ogrebullet" /LIBPATH:"P:\Program Files (x86)\bullet\lib\Release" caelum.lib Hydrax.lib CEGUIOgreRenderer.lib CEGUIBase.lib OIS.lib OgreBulletCollisions.lib OgreBulletDynamics.lib bulletcollision.lib bulletdynamics.lib LinearMath.lib GIMPACTutils.lib ConvexDecomposition.lib OgreMain.lib OgreTerrain.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"obj\Release\Project_Gravity.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"F:\Jess\My Documents\Warwick\Year 4\4YP\Project\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\Release\Project_Gravity.lib" /MACHINE:X86 obj\Release\Project_Gravity.res
+         obj\Release\Main.obj
+         obj\Release\PGFrameListener.obj
+         obj\Release\Project_Gravity.obj
+         obj\Release\stdafx.obj
+            Creating library bin\Release\Project_Gravity.lib and object bin\Release\Project_Gravity.exp
+         Generating code
+         Finished generating code
+         Project_Gravity.vcxproj -> F:\Jess\My Documents\Warwick\Year 4\4YP\Project\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"bin\Release\\Project_Gravity.exe;#1" /manifest obj\Release\Project_Gravity.exe.intermediate.manifest
        PostBuildEvent:
          Description: Copying exe to samples bin directory ...
-         copy "bin\Release\\Project_Gravity.exe" "C:\ogre\Bin\Release"
+         copy "bin\Release\\Project_Gravity.exe" "P:\Program Files (x86)\Ogre\Bin\Release"
          :VCEnd
                  1 file(s) copied.
        FinalizeBuildStatus:
          Deleting file "obj\Release\Project_Gravity.unsuccessfulbuild".
          Touching "obj\Release\Project_Gravity.lastbuildstate".
-     1>Done Building Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" (build target(s)).
+     1>Done Building Project "F:\Jess\My Documents\Warwick\Year 4\4YP\Project\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.46
+Time Elapsed 00:00:22.66
