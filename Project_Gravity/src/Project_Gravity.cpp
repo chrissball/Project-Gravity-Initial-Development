@@ -24,12 +24,17 @@ void Project_Gravity::createCamera(void)
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 	mCamera->setNearClipDistance(5);
     mCamera->setFarClipDistance(99999*6);
-	mCamera->setPosition(Ogre::Vector3(528, 155, 2960));
+	//mCamera->setPosition(Ogre::Vector3(528, 155, 2960));
 
 	// Set camera look point
     mCamera->lookAt(Vector3(0,0,-300));
 	mCamera->setDirection(Ogre::Vector3(0.333, 0.071, -0.953));
     mCamera->setNearClipDistance(5);
+
+	//Create child node for the player
+	playerNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("PlayerNode");
+	playerNode->attachObject(mCamera);
+	playerNode->setPosition(1700, 200, 1100);
 }
 
 bool Project_Gravity::configure(void)
@@ -56,6 +61,8 @@ bool Project_Gravity::configure(void)
  
 void Project_Gravity::createScene(void)
 {		
+	//mSceneMgr->setShadowTechnique(SHADOWTYPE_TEXTURE_ADDITIVE);
+
 	Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_ANISOTROPIC);
     Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(7);
  
@@ -89,14 +96,6 @@ void Project_Gravity::createScene(void)
 	// Create water
 	mHydrax->create();
 
-	// Produce the island from the config file
-	mSceneMgr->setWorldGeometry("Island.cfg");
-
-	// Adds depth so the water is darker the deeper you go
-	mHydrax->getMaterialManager()->addDepthTechnique(
-		static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName("Island"))
-		->createTechnique());
-
 	// Fixes horizon error where sea meets skydome
 	std::vector<Ogre::RenderQueueGroupID> caelumskyqueue;
 	caelumskyqueue.push_back(static_cast<Ogre::RenderQueueGroupID>(Ogre::RENDER_QUEUE_SKIES_EARLY + 2));
@@ -105,13 +104,84 @@ void Project_Gravity::createScene(void)
 	// Initializes the second camera window in the top right
 	this->createWindows();
 
-		// Create fish
-	Ogre::Entity* fishEntity = mSceneMgr->createEntity("fish", "Icosphere.mesh");
-	fishNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("fishNode");
-	fishNode->attachObject(fishEntity);
-	fishNode->setPosition(Ogre::Vector3(568, 155, 2880));
-	fishNode->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
-	mCamera->lookAt(fishNode->getPosition());
+		// Create LOOK AT SHADOWS!
+	Ogre::Entity* palmEntity = mSceneMgr->createEntity("palm", "Palm2.mesh");
+	palmNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode");
+	palmNode->attachObject(palmEntity);
+	palmNode->setPosition(Ogre::Vector3(517, 410, 1955));
+	//palmNode->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_Z));
+	palmNode->roll(Ogre::Radian(Degree(270)));
+	palmNode->setScale(15.0, 15.0, 15.0);
+	
+	Ogre::Entity* palmEntity2 = mSceneMgr->createEntity("palm2", "Palm2.mesh");
+	palmNode2 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode2");
+	palmNode2->attachObject(palmEntity2);
+	palmNode2->setPosition(Ogre::Vector3(1056, 480, 757));
+	//palmNode->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_Z));
+	palmNode2->roll(Ogre::Radian(Degree(270)));
+	palmNode2->pitch(Ogre::Radian(Degree(150)));
+	palmNode2->setScale(15.0, 15.0, 15.0);
+	
+	Ogre::Entity* palmEntity3 = mSceneMgr->createEntity("palm3", "Palm2.mesh");
+	palmNode3 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode3");
+	palmNode3->attachObject(palmEntity3);
+	palmNode3->setPosition(Ogre::Vector3(1954, 410, 1186));
+	//palmNode->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_Z));
+	palmNode3->roll(Ogre::Radian(Degree(270)));
+	palmNode3->pitch(Ogre::Radian(Degree(210)));
+	palmNode3->setScale(15.0, 15.0, 15.0);
+	
+	Ogre::Entity* palmEntity20 = mSceneMgr->createEntity("palm20", "Icosphere.mesh");
+	palmNode20 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode20");
+	palmNode20->attachObject(palmEntity20);
+	palmNode20->setPosition(Ogre::Vector3(338, 79, 1692));
+	palmNode20->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	palmNode20->setScale(3.0, 3.0, 3.0);
+	
+	Ogre::Entity* palmEntity30 = mSceneMgr->createEntity("palm30", "Icosphere.mesh");
+	palmNode30 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode30");
+	palmNode30->attachObject(palmEntity30);
+	palmNode30->setPosition(Ogre::Vector3(297, 78, 1627));
+	palmNode30->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	palmNode30->setScale(3.0, 3.0, 3.0);
+	
+	Ogre::Entity* palmEntity40 = mSceneMgr->createEntity("palm40", "Icosphere.mesh");
+	palmNode40 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode40");
+	palmNode40->attachObject(palmEntity40);
+	palmNode40->setPosition(Ogre::Vector3(297, 77, 1555));
+	palmNode40->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	palmNode40->setScale(3.0, 3.0, 3.0);
+	
+	Ogre::Entity* palmEntity50 = mSceneMgr->createEntity("palm50", "Icosphere.mesh");
+	palmNode50 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode50");
+	palmNode50->attachObject(palmEntity50);
+	palmNode50->setPosition(Ogre::Vector3(271, 78, 1503));
+	palmNode50->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	palmNode50->setScale(3.0, 3.0, 3.0);
+	
+	Ogre::Entity* palmEntity60 = mSceneMgr->createEntity("palm60", "Icosphere.mesh");
+	palmNode60 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode60");
+	palmNode60->attachObject(palmEntity60);
+	palmNode60->setPosition(Ogre::Vector3(266, 79, 1429));
+	palmNode60->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	palmNode60->setScale(3.0, 3.0, 3.0);
+	
+	Ogre::Entity* palmEntity70 = mSceneMgr->createEntity("palm70", "Icosphere.mesh");
+	palmNode70 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode70");
+	palmNode70->attachObject(palmEntity70);
+	palmNode70->setPosition(Ogre::Vector3(269, 77, 1319));
+	palmNode70->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
+	palmNode70->setScale(3.0, 3.0, 3.0);
+
+	mCamera->lookAt(palmNode->getPosition());
+
+	// Produce the island from the config file
+	mSceneMgr->setWorldGeometry("Island.cfg");
+
+	// Adds depth so the water is darker the deeper you go
+	mHydrax->getMaterialManager()->addDepthTechnique(
+		static_cast<Ogre::MaterialPtr>(Ogre::MaterialManager::getSingleton().getByName("Island"))
+		->createTechnique());
 }
  
 void Project_Gravity::createFrameListener(void)
@@ -153,7 +223,7 @@ void Project_Gravity::createWindows(void)
 	CEGUI::FontManager::getSingleton().create("DejaVuSans-10.font");
 	CEGUI::System::getSingleton().setDefaultFont("DejaVuSans-10");
 
-	// Create themed window
+	/*// Create themed window
 	CEGUI::WindowManager  &wmgr = CEGUI::WindowManager::getSingleton();
 	CEGUI::Window *sheet = wmgr.createWindow("DefaultWindow", "CEGUIDemo/Sheet");
 
@@ -202,7 +272,7 @@ void Project_Gravity::createWindows(void)
 	si->setPosition(CEGUI::UVector2(CEGUI::UDim(0.75f, 0), CEGUI::UDim(0.0f, 0)));
 	si->setProperty("Image", CEGUI::PropertyHelper::imageToString(&imageSet.getImage("RTTImage")));
 
-	sheet->addChildWindow(si);
+	sheet->addChildWindow(si);*/
 }
 
 void Project_Gravity::setupResources(void)

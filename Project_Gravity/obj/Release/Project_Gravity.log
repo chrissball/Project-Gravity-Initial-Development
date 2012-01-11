@@ -1,11 +1,11 @@
-﻿Build started 02/11/2011 19:27:56.
+﻿Build started 08/12/2011 11:58:19.
      1>Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "obj\Release\Project_Gravity.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\ogre\include\OGRE /Iinclude /IC:\ogre\Samples\Common\include /IC:\ogre\caelum\main\include /I"C:\ogre\hydrax\Hydrax-v0.5.1\Hydrax\src" /IC:\cegui\cegui\include /IC:\bullet\src /IC:\ogrebullet\Dynamics\include /IC:\ogrebullet\Collisions\include /IC:\ogre\include\OIS /IC:\ogre\include /IC:\ogre\boost_1_42 /Zi /nologo /W3 /WX- /O2 /Ob1 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /GF /Gm /EHsc /MD /GS- /Gy /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yu"StdAfx.h" /Fp"obj\Release\Project_Gravity.pch" /Fo"obj\Release\\" /Fd"obj\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\Project_Gravity.cpp /Zm200 
-         Project_Gravity.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\ogrebullet\Demos\include /IC:\ogre\include\OGRE /Iinclude /IC:\ogre\Samples\Common\include /IC:\ogre\caelum\main\include /I"C:\ogre\hydrax\Hydrax-v0.5.1\Hydrax\src" /IC:\cegui\cegui\include /IC:\bullet\src /IC:\ogrebullet\Dynamics\include /IC:\ogrebullet\Collisions\include /IC:\ogre\include\OIS /IC:\ogre\include /IC:\ogre\boost_1_42 /Zi /nologo /W3 /WX- /O2 /Ob1 /Oi /Ot /Oy /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /GF /Gm /EHsc /MD /GS- /Gy /fp:fast /Zc:wchar_t /Zc:forScope /GR /Yu"StdAfx.h" /Fp"obj\Release\Project_Gravity.pch" /Fo"obj\Release\\" /Fd"obj\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\PGFrameListener.cpp /Zm200 
+         PGFrameListener.cpp
        ResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -32,4 +32,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:15.03
+Time Elapsed 00:00:22.78

@@ -1,0 +1,17 @@
+
+// blender material: Material
+material Coconut 
+{
+    receive_shadows on
+    technique 
+    {
+        pass 
+        {
+            texture_unit
+            {
+                texture coconut.png
+
+            }
+        }
+    }
+}

@@ -3,9 +3,16 @@
 #include "ExampleApplication.h"
 #include "../res/resource.h"
 #include "OgreBulletDynamicsRigidBody.h"				 // for OgreBullet
+#include "OgreBulletListener.h"							 //For ray casting...
+#include "OgreBulletDynamics.h"							
+//#include "OgreBulletDynamicsPreRequisites.h"			
+#include "OgreBulletCollisions.h"
+#include "OgreBulletCollisionsRay.h"
+#include "Constraints/OgreBulletDynamicsPoint2pointConstraint.h"
 #include "Shapes/OgreBulletCollisionsStaticPlaneShape.h" // for static planes
 #include "Shapes/OgreBulletCollisionsBoxShape.h"		 // for Boxes
 #include "Shapes/OgreBulletCollisionsTerrainShape.h"	 // for the terrain
+#include "Shapes/OgreBulletCollisionsCapsuleShape.h"	// for player capsule
 
 #include <OgreCamera.h>
 #include <OgreEntity.h>

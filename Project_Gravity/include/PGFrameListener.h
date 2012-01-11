@@ -71,6 +71,10 @@ private:
     std::deque<Ogre::Vector3> mWalkList;   // The list of points we are walking to
 
     Ogre::AnimationState *mAnimationState; // The current animation state of the object
+	Ogre::AnimationState* anim;
+	Ogre::AnimationState* anim2;
+	Ogre::AnimationState* anim3;
+	Ogre::AnimationState* anim4;
     Ogre::Real mDistance;                  // The distance the object has left to travel
     Ogre::Vector3 mDirection;              // The direction the object is moving
     Ogre::Vector3 mDestination;            // The destination the object is moving towards
@@ -94,6 +98,24 @@ private:
 	std::deque<OgreBulletDynamics::RigidBody *>         mBodies;
 	std::deque<OgreBulletCollisions::CollisionShape *>  mShapes;
 	OgreBulletCollisions::HeightmapCollisionShape *mTerrainShape;
+
+	//JESS
+	OgreBulletDynamics::RigidBody *mPickedBody;
+	Ogre::Vector3 mOldPickingPos;
+    Ogre::Vector3 mOldPickingDist;
+	OgreBulletDynamics::TypedConstraint *mPickConstraint;
+	OgreBulletCollisions::CollisionClosestRayResultCallback *mCollisionClosestRayResultCallback;
+	ManualObject* myManualObject;
+	SceneNode* myManualObjectNode;
+	MaterialPtr myManualObjectMaterial;
+
+	//Player collision box
+	OgreBulletCollisions::CapsuleCollisionShape *playerBoxShape;
+	OgreBulletDynamics::RigidBody *playerBody;
+	//Player velocity
+	btScalar linVelX;
+	btScalar linVelY;
+	btScalar linVelZ;
 
 public:
     PGFrameListener(

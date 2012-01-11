@@ -44,7 +44,19 @@ private:
     bool mTerrainsImported;
  
 	CEGUI::OgreRenderer* mRenderer;
-	Ogre::SceneNode *fishNode;
+	Ogre::SceneNode *palmNode;
+	Ogre::SceneNode *palmNode20;
+	Ogre::SceneNode *palmNode30;
+	Ogre::SceneNode *palmNode40;
+	Ogre::SceneNode *palmNode50;
+	Ogre::SceneNode *palmNode60;
+	Ogre::SceneNode *palmNode70;
+	
+	Ogre::SceneNode *palmNode2;
+	Ogre::SceneNode *palmNode3;
+	Ogre::SceneNode *palmNode4;
+	
+	Ogre::SceneNode* playerNode;
 
 	// Hydrax pointer
 	Hydrax::Hydrax *mHydrax;

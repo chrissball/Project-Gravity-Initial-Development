@@ -28,6 +28,20 @@ PGFrameListener::PGFrameListener (
     windowHndStr << windowHnd;
     pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
 
+	//Initialising variables needed for ray casting
+	mCollisionClosestRayResultCallback = NULL;
+	mPickedBody = NULL;
+	//Initialising custom object to allow drawing of ray cast
+	myManualObject =  mSceneMgr->createManualObject("manual1"); 
+	myManualObjectNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("manual1_node"); 
+	myManualObjectMaterial = MaterialManager::getSingleton().create("manual1Material","debugger"); 
+	myManualObjectMaterial->setReceiveShadows(false); 
+	myManualObjectMaterial->getTechnique(0)->setLightingEnabled(true); 
+	myManualObjectMaterial->getTechnique(0)->getPass(0)->setDiffuse(1,0,0,0); 
+	myManualObjectMaterial->getTechnique(0)->getPass(0)->setAmbient(1,0,0); 
+	myManualObjectMaterial->getTechnique(0)->getPass(0)->setSelfIllumination(1,0,0);
+	myManualObjectNode->attachObject(myManualObject);
+
 	// Initialize input system
     mInputManager = OIS::InputManager::createInputSystem( pl );
     mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
@@ -66,6 +80,23 @@ PGFrameListener::PGFrameListener (
 	// Create the day/night system
 	createCaelumSystem();
 	mCaelumSystem->getSun()->setSpecularMultiplier(Ogre::ColourValue(0.3, 0.3, 0.3));
+
+	//Create collision box for player
+	playerBoxShape = new OgreBulletCollisions::CapsuleCollisionShape(10, 40, Vector3::UNIT_Y);
+	playerBody = new OgreBulletDynamics::RigidBody("playerBoxRigid", mWorld);
+
+	playerBody->setShape(	mSceneMgr->getSceneNode("PlayerNode"),
+ 				playerBoxShape,
+ 				0.6f,			// dynamic body restitution
+ 				0.0f,			// dynamic body friction
+ 				30.0f, 			// dynamic bodymass
+				(mCamera->getDerivedPosition() + mCamera->getDerivedDirection().normalisedCopy() * 10),	// starting position
+				Quaternion(1,0,0,0));// orientation
+	//Prevents the box from 'falling asleep'
+	playerBody->getBulletRigidBody()->setSleepingThresholds(0.0, 0.0);
+	// push the created objects to the dequeue
+ 	mShapes.push_back(playerBoxShape);
+ 	mBodies.push_back(playerBody);
 }
 
 PGFrameListener::~PGFrameListener()
@@ -211,6 +242,10 @@ bool PGFrameListener::keyPressed(const OIS::KeyEvent& evt)
     {
         mShutDown = true;
     }
+	else if (evt.key ==  (OIS::KC_8))
+	{
+		mSceneMgr->getSceneNode("palmNode")->setPosition(mSceneMgr->getSceneNode("palmNode")->getPosition() + 1);
+	}
 
 	// This will be used for the pause menu interface
 	CEGUI::System &sys = CEGUI::System::getSingleton();
@@ -243,8 +278,63 @@ bool PGFrameListener::keyReleased(const OIS::KeyEvent &evt)
 	return true;
 }
 
+/*bool PGFrameListener::mouseMoved( const OIS::MouseEvent &evt )
+{
+	if (freeRoam) // freeroam is the in game camera movement
+	{
+		mCamera->yaw(Ogre::Degree(-evt.state.X.rel * 0.15f));
+		mCamera->pitch(Ogre::Degree(-evt.state.Y.rel * 0.15f));
+		CEGUI::MouseCursor::getSingleton().setVisible(false);
+	}
+	else // if it is false then the pause menu is activated, the cursor is shown and the camera stops
+	{
+		CEGUI::System &sys = CEGUI::System::getSingleton();
+		sys.injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
+		// Scroll wheel.
+		if (evt.state.Z.rel)
+			sys.injectMouseWheelChange(evt.state.Z.rel / 120.0f);
+		CEGUI::MouseCursor::getSingleton().setVisible(true);
+	}
+
+	// This is to move a spawned robot to the center of the screen using raycasting
+	// eg hold mouse button down when looking at island and move mouse
+    if (mLMouseDown)
+    {
+        CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
+        Ogre::Ray mouseRay = mCamera->getCameraToViewportRay(mousePos.d_x/float(evt.state.width),mousePos.d_y/float(evt.state.height));
+        mRaySceneQuery->setRay(mouseRay);
+ 
+        Ogre::RaySceneQueryResult &result = mRaySceneQuery->execute();
+        Ogre::RaySceneQueryResult::iterator itr = result.begin();
+ 
+        if (itr != result.end() && itr->worldFragment)
+            mCurrentObject->setPosition(itr->worldFragment->singleIntersection);
+    }
+		
+	return true;
+}*/
+
 bool PGFrameListener::mouseMoved( const OIS::MouseEvent &evt )
 {
+	// Dragging a selected object
+	if(mPickedBody != NULL){
+		if (mPickConstraint)
+		{
+			// add a point to point constraint for picking
+			CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
+			Ogre::Ray rayTo = mCamera->getCameraToViewportRay (mousePos.d_x/mWindow->getWidth(), mousePos.d_y/mWindow->getHeight());
+
+			//move the constraint pivot
+			OgreBulletDynamics::PointToPointConstraint * p2p = static_cast <OgreBulletDynamics::PointToPointConstraint *>(mPickConstraint);
+			
+			//keep it at the same picking distance
+			const Ogre::Vector3 eyePos(mCamera->getDerivedPosition());
+			Ogre::Vector3 dir = rayTo.getDirection () * mOldPickingDist;
+			const Ogre::Vector3 newPos (eyePos + dir);
+			p2p->setPivotB (newPos);   
+		}
+	}
+
 	if (freeRoam) // freeroam is the in game camera movement
 	{
 		mCamera->yaw(Ogre::Degree(-evt.state.X.rel * 0.15f));
@@ -280,6 +370,103 @@ bool PGFrameListener::mouseMoved( const OIS::MouseEvent &evt )
 }
 
 bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
+{
+	// Pick nearest object to player
+    Ogre::Vector3 pickPos;
+    Ogre::Ray rayTo;
+	OgreBulletDynamics::RigidBody * body = NULL;
+	CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
+
+	//Gets mouse co-ordinates
+	rayTo = mCamera->getCameraToViewportRay (mousePos.d_x/mWindow->getWidth(), mousePos.d_y/mWindow->getHeight());
+
+	if(mCollisionClosestRayResultCallback != NULL) {
+		delete mCollisionClosestRayResultCallback;
+	}
+
+	mCollisionClosestRayResultCallback = new OgreBulletCollisions::CollisionClosestRayResultCallback(rayTo, mWorld, mCamera->getFarClipDistance());
+
+	//Fire ray towards mouse position
+    mWorld->launchRay (*mCollisionClosestRayResultCallback);
+
+	//Draw ray
+	/*myManualObjectNode->detachObject(myManualObject);
+	myManualObject->begin("manual1Material", Ogre::RenderOperation::OT_LINE_LIST); 
+	myManualObject->position(rayTo.getOrigin().x, rayTo.getOrigin().y, rayTo.getOrigin().z); 
+	myManualObject->position(mCollisionClosestRayResultCallback->getRayEndPoint().x, mCollisionClosestRayResultCallback->getRayEndPoint().y, mCollisionClosestRayResultCallback->getRayEndPoint().z); 
+	myManualObject->end(); 
+	myManualObjectNode->attachObject(myManualObject);
+	*/
+	//If there was a collision, select the one nearest the player
+    if (mCollisionClosestRayResultCallback->doesCollide ())
+    {
+		std::cout << "Collision found" << std::endl;
+        body = static_cast <OgreBulletDynamics::RigidBody *> 
+            (mCollisionClosestRayResultCallback->getCollidedObject());
+		
+		pickPos = mCollisionClosestRayResultCallback->getCollisionPoint ();
+        std::cout << body->getName() << std::endl;
+	} else {
+		 std::cout << "No collisions found" << std::endl;
+	}
+
+
+	//If there was a collision..
+    if (body != NULL)
+    {  
+        if (!(body->isStaticObject()))
+		{
+            mPickedBody = body;
+            mPickedBody->disableDeactivation();		
+            const Ogre::Vector3 localPivot (body->getCenterOfMassPivot(pickPos));
+            OgreBulletDynamics::PointToPointConstraint *p2pConstraint  = new OgreBulletDynamics::PointToPointConstraint(body, localPivot);
+
+            mWorld->addConstraint(p2pConstraint);					    
+
+            //save mouse position for dragging
+            mOldPickingPos = pickPos;
+            const Ogre::Vector3 eyePos(mCamera->getDerivedPosition());
+            mOldPickingDist  = (pickPos - eyePos).length();
+
+            //very weak constraint for picking
+            p2pConstraint->setTau (0.1f);
+            mPickConstraint = p2pConstraint;
+        }
+  
+    }
+
+	// This is for the pause menu interface
+    CEGUI::System::getSingleton().injectMouseButtonDown(convertButton(id));
+    return true;
+}
+
+bool PGFrameListener::mouseReleased( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
+{
+	// Left mouse button up
+    if (id == OIS::MB_Left)
+    {
+        mLMouseDown = false;
+
+		if(mPickedBody != NULL) {
+			// was dragging, but button released
+			// Remove constraint
+			mWorld->removeConstraint(mPickConstraint);
+			delete mPickConstraint;
+
+			mPickConstraint = NULL;
+			mPickedBody->forceActivationState();
+			mPickedBody->setDeactivationTime( 0.f );
+			mPickedBody = NULL;
+		}
+    }
+
+	// This is for the pause menu interface
+	CEGUI::System::getSingleton().injectMouseButtonUp(convertButton(id));
+	return true;
+}
+
+
+/*bool PGFrameListener::mousePressed( const OIS::MouseEvent &evt, OIS::MouseButtonID id )
 {
 	// Left mouse button down spawns a robot
 	if (id == OIS::MB_Left)
@@ -336,7 +523,7 @@ bool PGFrameListener::mouseReleased( const OIS::MouseEvent &evt, OIS::MouseButto
 	// This is for the pause menu interface
 	CEGUI::System::getSingleton().injectMouseButtonUp(convertButton(id));
 	return true;
-}
+}*/
 
 CEGUI::MouseButton PGFrameListener::convertButton(OIS::MouseButtonID buttonID)
 {
@@ -363,7 +550,7 @@ bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	//mCaelumSystem->getSun()->setSpecularMultiplier(Ogre::ColourValue(0.3, 0.3, 0.3));
 
 	// Setup the scene query
-    Ogre::Vector3 camPos = mCamera->getPosition();
+    /*Ogre::Vector3 camPos = mCamera->getPosition();
     Ogre::Ray cameraRay(Ogre::Vector3(camPos.x, 5000.0f, camPos.z), Ogre::Vector3::NEGATIVE_UNIT_Y);
     mRaySceneQuery->setRay(cameraRay);
 
@@ -377,8 +564,11 @@ bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 		Ogre::Real terrainHeight = itr->worldFragment->singleIntersection.y;
         if ((terrainHeight + 10.0f) > camPos.y)
 			mCamera->setPosition( camPos.x, terrainHeight + 10.0f, camPos.z );
-    }
+    }*/
 	
+	//Keep player upright
+	playerBody->getBulletRigidBody()->setAngularFactor(0.0);
+
 	// Move the robot
 	if (mDirection == Ogre::Vector3::ZERO) 
     {
@@ -433,12 +623,25 @@ bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
             mSceneMgr->getSceneNode("RobotNode")->translate(mDirection * move);
         } 
     } 
+	
+	anim = mSceneMgr->getEntity("palm")->getAnimationState("my_animation");
+    anim->setLoop(true);
+    anim->setEnabled(true);
+	anim2 = mSceneMgr->getEntity("palm2")->getAnimationState("my_animation");
+    anim2->setLoop(true);
+    anim2->setEnabled(true);
+	anim3 = mSceneMgr->getEntity("palm3")->getAnimationState("my_animation");
+    anim3->setLoop(true);
+    anim3->setEnabled(true);
 
 	// Animate the robot
 	mAnimationState->addTime(evt.timeSinceLastFrame);
+	anim->addTime(evt.timeSinceLastFrame);
+	anim2->addTime(evt.timeSinceLastFrame);
+	anim3->addTime(evt.timeSinceLastFrame);
 
 	// Make the secondary camera look at the robot
-	mSceneMgr->getCamera("RTTCam")->lookAt(mSceneMgr->getSceneNode("RobotNode")->getPosition());
+	//mSceneMgr->getCamera("RTTCam")->lookAt(mSceneMgr->getSceneNode("RobotNode")->getPosition());
 
 	if(mWindow->isClosed())
         return false;
@@ -455,7 +658,9 @@ bool PGFrameListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 
 	// So that the caelum system is updated for both cameras
 	mCaelumSystem->notifyCameraChanged(mSceneMgr->getCamera("PlayerCam"));
-	mCaelumSystem->notifyCameraChanged(mSceneMgr->getCamera("RTTCam"));
+	//mCaelumSystem->notifyCameraChanged(mSceneMgr->getCamera("RTTCam"));
+
+	cout << mCamera->getPosition().x << "    " << mCamera->getPosition().y << "    " << mCamera->getPosition().z << endl;
  
     return true;
 }
@@ -530,7 +735,7 @@ void PGFrameListener::windowClosed(Ogre::RenderWindow* rw)
 
 void PGFrameListener::moveCamera(Ogre::Real timeSinceLastFrame)
 {
-	// build our acceleration vector based on keyboard input composite
+	/*// build our acceleration vector based on keyboard input composite
 	Ogre::Vector3 accel = Ogre::Vector3::ZERO;
 	if (mGoingForward) accel += mCamera->getDirection();
 	if (mGoingBack) accel -= mCamera->getDirection();
@@ -560,7 +765,33 @@ void PGFrameListener::moveCamera(Ogre::Real timeSinceLastFrame)
 	else if (mVelocity.squaredLength() < tooSmall * tooSmall)
 		mVelocity = Ogre::Vector3::ZERO;
 
-	if (mVelocity != Ogre::Vector3::ZERO) mCamera->move(mVelocity * timeSinceLastFrame);
+	if (mVelocity != Ogre::Vector3::ZERO) mCamera->move(mVelocity * timeSinceLastFrame);*/
+
+	linVelX = 0.5 * playerBody->getLinearVelocity().x;
+	linVelY = playerBody->getLinearVelocity().y;
+	linVelZ = 0.5 * playerBody->getLinearVelocity().z;
+
+	if (mGoingForward)
+	{
+		linVelX += Ogre::Math::Sin(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI)) * 30;
+		linVelZ += Ogre::Math::Cos(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI)) * 30;
+	}
+	if(mGoingBack)
+	{
+		linVelX -= Ogre::Math::Sin(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI)) * 30;
+		linVelZ -= Ogre::Math::Cos(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI)) * 30;
+	}
+	if (mGoingLeft)
+	{
+		linVelX += Ogre::Math::Sin(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI) + Ogre::Radian(Ogre::Math::PI / 2)) * 30;
+		linVelZ += Ogre::Math::Cos(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI) + Ogre::Radian(Ogre::Math::PI / 2)) * 30;
+	}
+	if (mGoingRight)
+	{
+		linVelX -= Ogre::Math::Sin(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI) + Ogre::Radian(Ogre::Math::PI / 2)) * 30;
+		linVelZ -= Ogre::Math::Cos(mCamera->getDerivedOrientation().getYaw() + Ogre::Radian(Ogre::Math::PI) + Ogre::Radian(Ogre::Math::PI / 2)) * 30;
+	}
+	playerBody->getBulletRigidBody()->setLinearVelocity(btVector3(linVelX, linVelY, linVelZ));
 }
 
 void PGFrameListener::showDebugOverlay(bool show)
@@ -583,7 +814,7 @@ void PGFrameListener::movefish(Ogre::Real timeSinceLastFrame)
 
 	if (nGoingRight)
 		if (nYaw)*/
-			mSceneMgr->getSceneNode("fishNode")->roll(Ogre::Degree(-1.3 * 100) * timeSinceLastFrame);
+			//mSceneMgr->getSceneNode("palmNode")->roll(Ogre::Degree(-1.3 * 100) * timeSinceLastFrame);
 	/*	else
 			mSceneMgr->getSceneNode("fishNode")->translate(Ogre::Vector3(200, 0, 0) * timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 
@@ -632,7 +863,7 @@ void PGFrameListener::spawnBox(void)
  	// create an ordinary, Ogre mesh with texture
  	Entity *entity = mSceneMgr->createEntity(
  			"Box" + StringConverter::toString(mNumEntitiesInstanced),
- 			"Icosphere.mesh");			    
+ 			"Coco.mesh");			    
  	entity->setCastShadows(true);
 	
  	// we need the bounding box of the box to be able to set the size of the Bullet-box
@@ -640,9 +871,11 @@ void PGFrameListener::spawnBox(void)
  	size = boundingB.getSize(); size /= 2.0f; // only the half needed
  	size *= 0.95f;	// Bullet margin is a bit bigger so we need a smaller size
  							// (Bullet 2.76 Physics SDK Manual page 18)
+	//size *= 3;
  	
  	SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode();
  	node->attachObject(entity);
+	//node->setScale(3, 3, 3);
  
  	// after that create the Bullet shape with the calculated size
  	OgreBulletCollisions::BoxCollisionShape *sceneBoxShape = new OgreBulletCollisions::BoxCollisionShape(size);
@@ -802,7 +1035,7 @@ void PGFrameListener::createCaelumSystem(void)
     // Set time acceleration.
 	mCaelumSystem->setSceneFogDensityMultiplier(0.0008f); // or some other small value.
 	mCaelumSystem->setManageSceneFog(false);
-	mCaelumSystem->getUniversalClock()->setTimeScale (128); // This sets the timescale for the day/night system
+	mCaelumSystem->getUniversalClock()->setTimeScale (64); // This sets the timescale for the day/night system
 
     // Register caelum as a listener.
     mWindow->addListener(mCaelumSystem);
