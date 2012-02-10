@@ -1,0 +1,21 @@
+00:30:18: Creating resource group General
+00:30:18: Creating resource group Internal
+00:30:18: Creating resource group Autodetect
+00:30:18: Registering ResourceManager for type Mesh
+00:30:18: Registering ResourceManager for type Material
+00:30:18: Registering ResourceManager for type Skeleton
+00:30:18: XMLSkeletonSerializer: reading XML data from Palm2.skeleton.xml...
+00:30:19: XMLSkeletonSerializer: Reading Bones name...
+00:30:19: XMLSkeletonSerializer: Reading Hierarchy data...
+00:30:19: XMLSkeletonSerializer: Reading Bones data...
+00:30:19: XMLSkeletonSerializer: Reading Animations data...
+00:30:19: Animation: nom: my_animation et longueur: 3.70833
+00:30:19: XMLSkeletonSerializer: Finished. Running SkeletonSerializer...
+00:30:19: Exporting bones..
+00:30:19: Bones exported.
+00:30:19: Exporting animations, count=1
+00:30:19: Exporting animation: my_animation
+00:30:19: Animation exported.
+00:30:19: Unregistering ResourceManager for type Skeleton
+00:30:19: Unregistering ResourceManager for type Material
+00:30:19: Unregistering ResourceManager for type Mesh

@@ -18154,7 +18154,7 @@
                 <face v1="2770" v2="2780" v3="3045"/>
             </faces>
         </submesh>
-        <submesh usesharedvertices="true" material="Material" use32bitindexes="False">
+        <submesh usesharedvertices="true" material="Palm" use32bitindexes="False">
             <faces count="2408">
                 <face v1="0" v2="1" v3="2"/>
                 <face v1="0" v2="2" v3="3"/>

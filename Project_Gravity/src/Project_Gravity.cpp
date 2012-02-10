@@ -24,15 +24,12 @@ void Project_Gravity::createCamera(void)
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 	mCamera->setNearClipDistance(5);
     mCamera->setFarClipDistance(99999*6);
+	mCamera->setAspectRatio(1);
 	//mCamera->setPosition(Ogre::Vector3(528, 155, 2960));
-
-	// Set camera look point
-    mCamera->lookAt(Vector3(0,0,-300));
-	mCamera->setDirection(Ogre::Vector3(0.333, 0.071, -0.953));
-    mCamera->setNearClipDistance(5);
 
 	//Create child node for the player
 	playerNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("PlayerNode");
+
 	playerNode->attachObject(mCamera);
 	playerNode->setPosition(1700, 200, 1100);
 }
@@ -74,24 +71,24 @@ void Project_Gravity::createScene(void)
 	// Create Hydrax ocean
 	mHydrax = new Hydrax::Hydrax(mSceneMgr, mCamera, mWindow->getViewport(0));
 
-	// Create our projected grid module  
+
 	Hydrax::Module::ProjectedGrid *mModule 
-		= new Hydrax::Module::ProjectedGrid(// Hydrax parent pointer
-											mHydrax,
-											// Noise module
-											new Hydrax::Noise::Perlin(/*Generic one*/),
-											// Base plane
-											Ogre::Plane(Ogre::Vector3(0,1,0), Ogre::Vector3(0,0,0)),
-											// Normal mode
-											Hydrax::MaterialManager::NM_VERTEX,
-											// Projected grid options
-											Hydrax::Module::ProjectedGrid::Options(/*264 Generic one*/));
+      = new Hydrax::Module::ProjectedGrid(// Hydrax parent pointer
+      mHydrax,
+      // Noise module
+      new Hydrax::Noise::Perlin(/*Generic one*/),
+      // Base plane
+      Ogre::Plane(Ogre::Vector3::UNIT_Y, Ogre::Real(0.0f)),
+      // Normal mode
+      Hydrax::MaterialManager::NM_VERTEX,
+      // Projected grid options
+      Hydrax::Module::ProjectedGrid::Options(/*264 /*Generic one*/));
 
 	// Set our module
 	mHydrax->setModule(static_cast<Hydrax::Module::Module*>(mModule));
 
 	// Load all parameters from config file
-	mHydrax->loadCfg("GSOcean.hdx");
+	mHydrax->loadCfg("PGOcean.hdx");
 
 	// Create water
 	mHydrax->create();
@@ -131,49 +128,47 @@ void Project_Gravity::createScene(void)
 	palmNode3->pitch(Ogre::Radian(Degree(210)));
 	palmNode3->setScale(15.0, 15.0, 15.0);
 	
-	Ogre::Entity* palmEntity20 = mSceneMgr->createEntity("palm20", "Icosphere.mesh");
+	Ogre::Entity* palmEntity20 = mSceneMgr->createEntity("palm20", "angelFish.mesh");
 	palmNode20 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode20");
 	palmNode20->attachObject(palmEntity20);
-	palmNode20->setPosition(Ogre::Vector3(338, 79, 1692));
+	palmNode20->setPosition(Ogre::Vector3(338, 120, 1692));
 	palmNode20->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
 	palmNode20->setScale(3.0, 3.0, 3.0);
 	
-	Ogre::Entity* palmEntity30 = mSceneMgr->createEntity("palm30", "Icosphere.mesh");
+	Ogre::Entity* palmEntity30 = mSceneMgr->createEntity("palm30", "angelFish.mesh");
 	palmNode30 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode30");
 	palmNode30->attachObject(palmEntity30);
-	palmNode30->setPosition(Ogre::Vector3(297, 78, 1627));
+	palmNode30->setPosition(Ogre::Vector3(297, 120, 1627));
 	palmNode30->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
 	palmNode30->setScale(3.0, 3.0, 3.0);
 	
-	Ogre::Entity* palmEntity40 = mSceneMgr->createEntity("palm40", "Icosphere.mesh");
+	Ogre::Entity* palmEntity40 = mSceneMgr->createEntity("palm40", "angelFish.mesh");
 	palmNode40 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode40");
 	palmNode40->attachObject(palmEntity40);
-	palmNode40->setPosition(Ogre::Vector3(297, 77, 1555));
+	palmNode40->setPosition(Ogre::Vector3(297, 120, 1555));
 	palmNode40->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
 	palmNode40->setScale(3.0, 3.0, 3.0);
 	
-	Ogre::Entity* palmEntity50 = mSceneMgr->createEntity("palm50", "Icosphere.mesh");
+	Ogre::Entity* palmEntity50 = mSceneMgr->createEntity("palm50", "angelFish.mesh");
 	palmNode50 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode50");
 	palmNode50->attachObject(palmEntity50);
-	palmNode50->setPosition(Ogre::Vector3(271, 78, 1503));
+	palmNode50->setPosition(Ogre::Vector3(271, 120, 1503));
 	palmNode50->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
 	palmNode50->setScale(3.0, 3.0, 3.0);
 	
-	Ogre::Entity* palmEntity60 = mSceneMgr->createEntity("palm60", "Icosphere.mesh");
+	Ogre::Entity* palmEntity60 = mSceneMgr->createEntity("palm60", "angelFish.mesh");
 	palmNode60 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode60");
 	palmNode60->attachObject(palmEntity60);
-	palmNode60->setPosition(Ogre::Vector3(266, 79, 1429));
+	palmNode60->setPosition(Ogre::Vector3(266, 120, 1429));
 	palmNode60->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
 	palmNode60->setScale(3.0, 3.0, 3.0);
 	
-	Ogre::Entity* palmEntity70 = mSceneMgr->createEntity("palm70", "Icosphere.mesh");
+	Ogre::Entity* palmEntity70 = mSceneMgr->createEntity("palm70", "angelFish.mesh");
 	palmNode70 = mSceneMgr->getRootSceneNode()->createChildSceneNode("palmNode70");
 	palmNode70->attachObject(palmEntity70);
-	palmNode70->setPosition(Ogre::Vector3(269, 77, 1319));
+	palmNode70->setPosition(Ogre::Vector3(269, 120, 1319));
 	palmNode70->setOrientation(Ogre::Quaternion (Degree(270), Vector3::UNIT_X));
 	palmNode70->setScale(3.0, 3.0, 3.0);
-
-	mCamera->lookAt(palmNode->getPosition());
 
 	// Produce the island from the config file
 	mSceneMgr->setWorldGeometry("Island.cfg");
@@ -318,8 +313,22 @@ void Project_Gravity::go(void)
 
     if (!setup())
         return;
+	
+	while(true)
+	{
+		// Pump window messages for nice behaviour
+		Ogre::WindowEventUtilities::messagePump();
+		 
+		if(mWindow->isClosed())
+		{
+			return;
+		}
 
-    mRoot->startRendering();
+		// Render a frame
+		mRoot->renderOneFrame();
+	}
+
+    //mRoot->startRendering();
 
     // clean up
     destroyScene();

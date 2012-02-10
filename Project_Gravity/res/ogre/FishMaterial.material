@@ -146,14 +146,12 @@ material FishMaterial
 			texture_unit normalMap
 			{
 				texture scalesTexture.png
-				tex_coord_set 0
-				colour_op replace
+
 			}
 			texture_unit alphaMap
 			{
 				texture angelFishUV.png
-				tex_coord_set 1
-				colour_op add
+
 			}
 		}
 	}

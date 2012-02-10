@@ -1,5 +1,5 @@
-﻿Build started 08/12/2011 11:58:19.
-     1>Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" on node 2 (build target(s)).
+﻿Build started 10/02/2012 18:24:01.
+     1>Project "E:\New folder\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "obj\Release\Project_Gravity.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
@@ -9,7 +9,7 @@
        ResourceCompile:
          All outputs are up-to-date.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\Release\\Project_Gravity.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\ogre\caelum\lib\release /LIBPATH:"C:\ogre\hydrax\Hydrax-v0.5.1\Hydrax\bin\release" /LIBPATH:C:\ogrebullet\lib\Release /LIBPATH:C:\ogre\lib\release /LIBPATH:C:\ogre\boost_1_42\lib /LIBPATH:C:\cegui\lib /LIBPATH:C:\ogrebullet /LIBPATH:C:\bullet\lib\Release caelum.lib Hydrax.lib CEGUIOgreRenderer.lib CEGUIBase.lib OIS.lib OgreBulletCollisions.lib OgreBulletDynamics.lib bulletcollision.lib bulletdynamics.lib LinearMath.lib GIMPACTutils.lib ConvexDecomposition.lib OgreMain.lib OgreTerrain.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"obj\Release\Project_Gravity.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:\Users\FloobieG\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\Release\Project_Gravity.lib" /MACHINE:X86 obj\Release\Project_Gravity.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"bin\Release\\Project_Gravity.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\ogre\caelum\lib\release /LIBPATH:"C:\ogre\hydrax\Hydrax-v0.5.1\Hydrax\bin\release" /LIBPATH:C:\ogrebullet\lib\Release /LIBPATH:C:\ogre\lib\release /LIBPATH:C:\ogre\boost_1_42\lib /LIBPATH:C:\cegui\lib /LIBPATH:C:\ogrebullet /LIBPATH:C:\bullet\lib\Release caelum.lib Hydrax.lib CEGUIOgreRenderer.lib CEGUIBase.lib OIS.lib OgreBulletCollisions.lib OgreBulletDynamics.lib bulletcollision.lib bulletdynamics.lib LinearMath.lib GIMPACTutils.lib ConvexDecomposition.lib OgreMain.lib OgreTerrain.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"obj\Release\Project_Gravity.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"E:\New folder\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"bin\Release\Project_Gravity.lib" /MACHINE:X86 obj\Release\Project_Gravity.res
          obj\Release\Main.obj
          obj\Release\PGFrameListener.obj
          obj\Release\Project_Gravity.obj
@@ -17,7 +17,7 @@
             Creating library bin\Release\Project_Gravity.lib and object bin\Release\Project_Gravity.exp
          Generating code
          Finished generating code
-         Project_Gravity.vcxproj -> C:\Users\FloobieG\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.exe
+         Project_Gravity.vcxproj -> E:\New folder\Project-Gravity\Project_Gravity\bin\Release\Project_Gravity.exe
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"bin\Release\\Project_Gravity.exe;#1" /manifest obj\Release\Project_Gravity.exe.intermediate.manifest
        PostBuildEvent:
@@ -28,8 +28,8 @@
        FinalizeBuildStatus:
          Deleting file "obj\Release\Project_Gravity.unsuccessfulbuild".
          Touching "obj\Release\Project_Gravity.lastbuildstate".
-     1>Done Building Project "C:\Users\FloobieG\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" (build target(s)).
+     1>Done Building Project "E:\New folder\Project-Gravity\Project_Gravity\Project_Gravity.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:22.78
+Time Elapsed 00:00:20.06

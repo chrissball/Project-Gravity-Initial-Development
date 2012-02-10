@@ -1,524 +1,563 @@
-11:58:42: Creating resource group General
-11:58:42: Creating resource group Internal
-11:58:42: Creating resource group Autodetect
-11:58:42: SceneManagerFactory for type 'DefaultSceneManager' registered.
-11:58:42: Registering ResourceManager for type Material
-11:58:42: Registering ResourceManager for type Mesh
-11:58:42: Registering ResourceManager for type Skeleton
-11:58:42: MovableObjectFactory for type 'ParticleSystem' registered.
-11:58:42: OverlayElementFactory for type Panel registered.
-11:58:42: OverlayElementFactory for type BorderPanel registered.
-11:58:42: OverlayElementFactory for type TextArea registered.
-11:58:42: Registering ResourceManager for type Font
-11:58:42: ArchiveFactory for archive type FileSystem registered.
-11:58:42: ArchiveFactory for archive type Zip registered.
-11:58:42: DDS codec registering
-11:58:42: FreeImage version: 3.13.1
-11:58:42: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
-11:58:42: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
-11:58:42: Registering ResourceManager for type HighLevelGpuProgram
-11:58:42: Registering ResourceManager for type Compositor
-11:58:42: MovableObjectFactory for type 'Entity' registered.
-11:58:42: MovableObjectFactory for type 'Light' registered.
-11:58:42: MovableObjectFactory for type 'BillboardSet' registered.
-11:58:42: MovableObjectFactory for type 'ManualObject' registered.
-11:58:42: MovableObjectFactory for type 'BillboardChain' registered.
-11:58:42: MovableObjectFactory for type 'RibbonTrail' registered.
-11:58:42: Loading library .\RenderSystem_Direct3D9
-11:58:42: Installing plugin: D3D9 RenderSystem
-11:58:42: D3D9 : Direct3D9 Rendering Subsystem created.
-11:58:42: D3D9: Driver Detection Starts
-11:58:42: D3D9: Driver Detection Ends
-11:58:42: Plugin successfully installed
-11:58:42: Loading library .\RenderSystem_GL
-11:58:42: Installing plugin: GL RenderSystem
-11:58:42: OpenGL Rendering Subsystem created.
-11:58:43: Plugin successfully installed
-11:58:43: Loading library .\Plugin_ParticleFX
-11:58:43: Installing plugin: ParticleFX
-11:58:43: Particle Emitter Type 'Point' registered
-11:58:43: Particle Emitter Type 'Box' registered
-11:58:43: Particle Emitter Type 'Ellipsoid' registered
-11:58:43: Particle Emitter Type 'Cylinder' registered
-11:58:43: Particle Emitter Type 'Ring' registered
-11:58:43: Particle Emitter Type 'HollowEllipsoid' registered
-11:58:43: Particle Affector Type 'LinearForce' registered
-11:58:43: Particle Affector Type 'ColourFader' registered
-11:58:43: Particle Affector Type 'ColourFader2' registered
-11:58:43: Particle Affector Type 'ColourImage' registered
-11:58:43: Particle Affector Type 'ColourInterpolator' registered
-11:58:43: Particle Affector Type 'Scaler' registered
-11:58:43: Particle Affector Type 'Rotator' registered
-11:58:43: Particle Affector Type 'DirectionRandomiser' registered
-11:58:43: Particle Affector Type 'DeflectorPlane' registered
-11:58:43: Plugin successfully installed
-11:58:43: Loading library .\Plugin_BSPSceneManager
-11:58:43: Installing plugin: BSP Scene Manager
-11:58:43: Plugin successfully installed
-11:58:43: Loading library .\Plugin_CgProgramManager
-11:58:43: Installing plugin: Cg Program Manager
-11:58:43: Plugin successfully installed
-11:58:43: Loading library .\Plugin_PCZSceneManager
-11:58:43: Installing plugin: Portal Connected Zone Scene Manager
-11:58:43: PCZone Factory Type 'ZoneType_Default' registered
-11:58:43: Plugin successfully installed
-11:58:43: Loading library .\Plugin_OctreeZone
-11:58:43: Installing plugin: Octree Zone Factory
-11:58:43: Plugin successfully installed
-11:58:43: Loading library .\Plugin_OctreeSceneManager
-11:58:43: Installing plugin: Octree & Terrain Scene Manager
-11:58:43: Plugin successfully installed
-11:58:43: *-*-* OGRE Initialising
-11:58:43: *-*-* Version 1.7.1 (Cthugha)
-11:58:43: Creating resource group Caelum
-11:58:43: Added resource location '../../res/caelum' of type 'FileSystem' to resource group 'Caelum'
-11:58:43: Creating resource group Fonts
-11:58:43: Added resource location '../../res/cegui/fonts' of type 'FileSystem' to resource group 'Fonts'
-11:58:43: Added resource location '../../res/cegui/fonts' of type 'FileSystem' to resource group 'Fonts'
-11:58:43: Creating resource group Hydrax
-11:58:43: Added resource location '../../res/hydrax' of type 'FileSystem' to resource group 'Hydrax'
-11:58:43: Creating resource group Imagesets
-11:58:43: Added resource location '../../res/cegui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
-11:58:43: Creating resource group Island
-11:58:43: Added resource location '../../res/island' of type 'FileSystem' to resource group 'Island'
-11:58:43: Creating resource group LUA Scripts
-11:58:43: Added resource location '../../res/cegui/lua_scripts' of type 'FileSystem' to resource group 'LUA Scripts'
-11:58:43: Creating resource group Layouts
-11:58:43: Added resource location '../../res/cegui/layouts' of type 'FileSystem' to resource group 'Layouts'
-11:58:43: Creating resource group LookNFeel
-11:58:43: Added resource location '../../res/cegui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
-11:58:43: Creating resource group Ogre
-11:58:43: Added resource location '../../res/ogre' of type 'FileSystem' to resource group 'Ogre'
-11:58:43: Creating resource group Schemes
-11:58:43: Added resource location '../../res/cegui/schemes' of type 'FileSystem' to resource group 'Schemes'
-11:58:43: Creating resource group XML Schemas
-11:58:43: Added resource location '../../res/cegui/xml_schemas' of type 'FileSystem' to resource group 'XML Schemas'
-11:58:43: Creating resource group debugger
-11:58:43: Added resource location 'C:\' of type 'FileSystem' to resource group 'debugger'
-11:58:43: D3D9 : RenderSystem Option: Allow NVPerfHUD = No
-11:58:43: D3D9 : RenderSystem Option: FSAA = 0
-11:58:43: D3D9 : RenderSystem Option: Floating-point mode = Fastest
-11:58:43: D3D9 : RenderSystem Option: Full Screen = No
-11:58:43: D3D9 : RenderSystem Option: Rendering Device = Monitor-1-NVIDIA GeForce 9800 GT
-11:58:43: D3D9 : RenderSystem Option: Resource Creation Policy = Create on all devices
-11:58:43: D3D9 : RenderSystem Option: VSync = No
-11:58:43: D3D9 : RenderSystem Option: VSync Interval = 1
-11:58:43: D3D9 : RenderSystem Option: Video Mode = 1920 x 1080 @ 32-bit colour
-11:58:43: D3D9 : RenderSystem Option: sRGB Gamma Conversion = No
-11:58:43: CPU Identifier & Features
-11:58:43: -------------------------
-11:58:43:  *   CPU ID: AuthenticAMD: AMD Phenom(tm) 9950 Quad-Core Processor
-11:58:43:  *      SSE: yes
-11:58:43:  *     SSE2: yes
-11:58:43:  *     SSE3: yes
-11:58:43:  *      MMX: yes
-11:58:43:  *   MMXEXT: yes
-11:58:43:  *    3DNOW: yes
-11:58:43:  * 3DNOWEXT: yes
-11:58:43:  *     CMOV: yes
-11:58:43:  *      TSC: yes
-11:58:43:  *      FPU: yes
-11:58:43:  *      PRO: yes
-11:58:43:  *       HT: no
-11:58:43: -------------------------
-11:58:43: D3D9 : Subsystem Initialising
-11:58:43: Registering ResourceManager for type Texture
-11:58:43: Registering ResourceManager for type GpuProgram
-11:58:43: D3D9RenderSystem::_createRenderWindow "Project Gravity", 1920x1080 windowed  miscParams: FSAA=0 FSAAHint= colourDepth=32 gamma=false monitorIndex=0 useNVPerfHUD=false vsync=false vsyncInterval=1 
-11:58:43: D3D9 : Created D3D9 Rendering Window 'Project Gravity' : 1904x1080, 32bpp
-11:58:43: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT16_R
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT32_R
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT16_GR
-11:58:43: D3D9: Vertex texture format supported - PF_FLOAT32_GR
-11:58:43: RenderSystem capabilities
-11:58:43: -------------------------
-11:58:43: RenderSystem Name: Direct3D9 Rendering Subsystem
-11:58:43: GPU Vendor: nvidia
-11:58:43: Device Name: Monitor-1-NVIDIA GeForce 9800 GT
-11:58:43: Driver Version: 8.17.12.8562
-11:58:43:  * Fixed function pipeline: yes
-11:58:43:  * Hardware generation of mipmaps: yes
-11:58:43:  * Texture blending: yes
-11:58:43:  * Anisotropic texture filtering: yes
-11:58:43:  * Dot product texture operation: yes
-11:58:43:  * Cube mapping: yes
-11:58:43:  * Hardware stencil buffer: yes
-11:58:43:    - Stencil depth: 8
-11:58:43:    - Two sided stencil support: yes
-11:58:43:    - Wrap stencil values: yes
-11:58:43:  * Hardware vertex / index buffers: yes
-11:58:43:  * Vertex programs: yes
-11:58:43:  * Number of floating-point constants for vertex programs: 256
-11:58:43:  * Number of integer constants for vertex programs: 16
-11:58:43:  * Number of boolean constants for vertex programs: 16
-11:58:43:  * Fragment programs: yes
-11:58:43:  * Number of floating-point constants for fragment programs: 224
-11:58:43:  * Number of integer constants for fragment programs: 16
-11:58:43:  * Number of boolean constants for fragment programs: 16
-11:58:43:  * Geometry programs: no
-11:58:43:  * Number of floating-point constants for geometry programs: 726
-11:58:44:  * Number of integer constants for geometry programs: 31073
-11:58:44:  * Number of boolean constants for geometry programs: 30063
-11:58:44:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
-11:58:44:  * Texture Compression: yes
-11:58:44:    - DXT: yes
-11:58:44:    - VTC: no
-11:58:44:    - PVRTC: no
-11:58:44:  * Scissor Rectangle: yes
-11:58:44:  * Hardware Occlusion Query: yes
-11:58:44:  * User clip planes: yes
-11:58:44:  * VET_UBYTE4 vertex element type: yes
-11:58:44:  * Infinite far plane projection: yes
-11:58:44:  * Hardware render-to-texture: yes
-11:58:44:  * Floating point textures: yes
-11:58:44:  * Non-power-of-two textures: yes
-11:58:44:  * Volume textures: yes
-11:58:44:  * Multiple Render Targets: 4
-11:58:44:    - With different bit depths: yes
-11:58:44:  * Point Sprites: yes
-11:58:44:  * Extended point parameters: yes
-11:58:44:  * Max Point Size: 10
-11:58:44:  * Vertex texture fetch: yes
-11:58:44:  * Number of world matrices: 0
-11:58:44:  * Number of texture units: 8
-11:58:44:  * Stencil buffer depth: 8
-11:58:44:  * Number of vertex blend matrices: 0
-11:58:44:    - Max vertex textures: 4
-11:58:44:    - Vertex textures shared: no
-11:58:44:  * Render to Vertex Buffer : no
-11:58:44:  * DirectX per stage constants: yes
-11:58:44: ***************************************
-11:58:44: *** D3D9 : Subsystem Initialised OK ***
-11:58:44: ***************************************
-11:58:44: DefaultWorkQueue('Root') initialising on thread 0054E2E0.
-11:58:44: DefaultWorkQueue('Root')::WorkerFunc - thread 0061F7B0 starting.
-11:58:44: DefaultWorkQueue('Root')::WorkerFunc - thread 0061F820 starting.
-11:58:44: Particle Renderer Type 'billboard' registered
-11:58:44: DefaultWorkQueue('Root')::WorkerFunc - thread 0061FD40 starting.
-11:58:44: DefaultWorkQueue('Root')::WorkerFunc - thread 00624D60 starting.
-11:58:44: SceneManagerFactory for type 'BspSceneManager' registered.
-11:58:44: Registering ResourceManager for type BspLevel
-11:58:44: SceneManagerFactory for type 'PCZSceneManager' registered.
-11:58:44: MovableObjectFactory for type 'PCZLight' registered.
-11:58:44: MovableObjectFactory for type 'Portal' registered.
-11:58:44: MovableObjectFactory for type 'AntiPortal' registered.
-11:58:44: PCZone Factory Type 'ZoneType_Octree' registered
-11:58:44: PCZone Factory Type 'ZoneType_Terrain' registered
-11:58:44: SceneManagerFactory for type 'OctreeSceneManager' registered.
-11:58:44: SceneManagerFactory for type 'TerrainSceneManager' registered.
-11:58:44: TerrainSceneManager: Registered a new PageSource for type Heightmap
-11:58:44: Parsing scripts for resource group Autodetect
-11:58:44: Finished parsing scripts for resource group Autodetect
-11:58:44: Parsing scripts for resource group Caelum
-11:58:44: Parsing script DepthRender.program
-11:58:44: Parsing script GroundFog.program
-11:58:44: Parsing script Haze.program
-11:58:44: Parsing script MinimalCompositorVP.program
-11:58:44: Parsing script DepthComposer.material
-11:58:44: Parsing script GroundFog.material
-11:58:44: Parsing script LayeredClouds.material
-11:58:44: Parsing script moon.material
-11:58:44: Parsing script PointStarfield.material
-11:58:44: Parsing script Precipitation.material
-11:58:44: Parsing script SkyDome.material
-11:58:44: Parsing script Starfield.material
-11:58:44: Parsing script Sun.material
-11:58:44: Parsing script DepthComposer.compositor
-11:58:44: Parsing script Precipitation.compositor
-11:58:44: Finished parsing scripts for resource group Caelum
-11:58:44: Parsing scripts for resource group Fonts
-11:58:44: Finished parsing scripts for resource group Fonts
-11:58:44: Parsing scripts for resource group General
-11:58:44: Finished parsing scripts for resource group General
-11:58:44: Parsing scripts for resource group Hydrax
-11:58:44: Finished parsing scripts for resource group Hydrax
-11:58:44: Parsing scripts for resource group Imagesets
-11:58:44: Finished parsing scripts for resource group Imagesets
-11:58:44: Parsing scripts for resource group Internal
-11:58:44: Finished parsing scripts for resource group Internal
-11:58:44: Parsing scripts for resource group Island
-11:58:44: Parsing script Island.material
-11:58:45: Finished parsing scripts for resource group Island
-11:58:45: Parsing scripts for resource group LUA Scripts
-11:58:45: Finished parsing scripts for resource group LUA Scripts
-11:58:45: Parsing scripts for resource group Layouts
-11:58:45: Finished parsing scripts for resource group Layouts
-11:58:45: Parsing scripts for resource group LookNFeel
-11:58:45: Finished parsing scripts for resource group LookNFeel
-11:58:45: Parsing scripts for resource group Ogre
-11:58:45: Parsing script Examples.program
-11:58:45: Parsing script StdQuad_vp.program
-11:58:45: Parsing script Coconut.material
-11:58:45: Parsing script Coconut2.material
-11:58:45: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Palm.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
-11:58:45: High-level program Palm/VP encountered an error during loading and is thus not supported.
+18:38:22: Creating resource group General
+18:38:22: Creating resource group Internal
+18:38:22: Creating resource group Autodetect
+18:38:22: SceneManagerFactory for type 'DefaultSceneManager' registered.
+18:38:22: Registering ResourceManager for type Material
+18:38:22: Registering ResourceManager for type Mesh
+18:38:22: Registering ResourceManager for type Skeleton
+18:38:22: MovableObjectFactory for type 'ParticleSystem' registered.
+18:38:22: OverlayElementFactory for type Panel registered.
+18:38:22: OverlayElementFactory for type BorderPanel registered.
+18:38:22: OverlayElementFactory for type TextArea registered.
+18:38:22: Registering ResourceManager for type Font
+18:38:22: ArchiveFactory for archive type FileSystem registered.
+18:38:22: ArchiveFactory for archive type Zip registered.
+18:38:22: DDS codec registering
+18:38:22: FreeImage version: 3.13.1
+18:38:22: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+18:38:22: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
+18:38:22: Registering ResourceManager for type HighLevelGpuProgram
+18:38:22: Registering ResourceManager for type Compositor
+18:38:22: MovableObjectFactory for type 'Entity' registered.
+18:38:22: MovableObjectFactory for type 'Light' registered.
+18:38:22: MovableObjectFactory for type 'BillboardSet' registered.
+18:38:22: MovableObjectFactory for type 'ManualObject' registered.
+18:38:22: MovableObjectFactory for type 'BillboardChain' registered.
+18:38:22: MovableObjectFactory for type 'RibbonTrail' registered.
+18:38:22: Loading library .\RenderSystem_Direct3D9
+18:38:22: Installing plugin: D3D9 RenderSystem
+18:38:22: D3D9 : Direct3D9 Rendering Subsystem created.
+18:38:23: D3D9: Driver Detection Starts
+18:38:23: D3D9: Driver Detection Ends
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\RenderSystem_GL
+18:38:23: Installing plugin: GL RenderSystem
+18:38:23: OpenGL Rendering Subsystem created.
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\Plugin_ParticleFX
+18:38:23: Installing plugin: ParticleFX
+18:38:23: Particle Emitter Type 'Point' registered
+18:38:23: Particle Emitter Type 'Box' registered
+18:38:23: Particle Emitter Type 'Ellipsoid' registered
+18:38:23: Particle Emitter Type 'Cylinder' registered
+18:38:23: Particle Emitter Type 'Ring' registered
+18:38:23: Particle Emitter Type 'HollowEllipsoid' registered
+18:38:23: Particle Affector Type 'LinearForce' registered
+18:38:23: Particle Affector Type 'ColourFader' registered
+18:38:23: Particle Affector Type 'ColourFader2' registered
+18:38:23: Particle Affector Type 'ColourImage' registered
+18:38:23: Particle Affector Type 'ColourInterpolator' registered
+18:38:23: Particle Affector Type 'Scaler' registered
+18:38:23: Particle Affector Type 'Rotator' registered
+18:38:23: Particle Affector Type 'DirectionRandomiser' registered
+18:38:23: Particle Affector Type 'DeflectorPlane' registered
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\Plugin_BSPSceneManager
+18:38:23: Installing plugin: BSP Scene Manager
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\Plugin_CgProgramManager
+18:38:23: Installing plugin: Cg Program Manager
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\Plugin_PCZSceneManager
+18:38:23: Installing plugin: Portal Connected Zone Scene Manager
+18:38:23: PCZone Factory Type 'ZoneType_Default' registered
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\Plugin_OctreeZone
+18:38:23: Installing plugin: Octree Zone Factory
+18:38:23: Plugin successfully installed
+18:38:23: Loading library .\Plugin_OctreeSceneManager
+18:38:23: Installing plugin: Octree & Terrain Scene Manager
+18:38:23: Plugin successfully installed
+18:38:23: *-*-* OGRE Initialising
+18:38:23: *-*-* Version 1.7.1 (Cthugha)
+18:38:23: Creating resource group Caelum
+18:38:23: Added resource location '../../res/caelum' of type 'FileSystem' to resource group 'Caelum'
+18:38:23: Creating resource group Fonts
+18:38:23: Added resource location '../../res/cegui/fonts' of type 'FileSystem' to resource group 'Fonts'
+18:38:23: Added resource location '../../res/cegui/fonts' of type 'FileSystem' to resource group 'Fonts'
+18:38:23: Creating resource group Hydrax
+18:38:23: Added resource location '../../res/hydrax' of type 'FileSystem' to resource group 'Hydrax'
+18:38:23: Creating resource group Imagesets
+18:38:23: Added resource location '../../res/cegui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+18:38:23: Creating resource group Island
+18:38:23: Added resource location '../../res/island' of type 'FileSystem' to resource group 'Island'
+18:38:23: Creating resource group LUA Scripts
+18:38:23: Added resource location '../../res/cegui/lua_scripts' of type 'FileSystem' to resource group 'LUA Scripts'
+18:38:23: Creating resource group Layouts
+18:38:23: Added resource location '../../res/cegui/layouts' of type 'FileSystem' to resource group 'Layouts'
+18:38:23: Creating resource group LookNFeel
+18:38:23: Added resource location '../../res/cegui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+18:38:23: Creating resource group Ogre
+18:38:23: Added resource location '../../res/ogre' of type 'FileSystem' to resource group 'Ogre'
+18:38:23: Creating resource group Schemes
+18:38:23: Added resource location '../../res/cegui/schemes' of type 'FileSystem' to resource group 'Schemes'
+18:38:23: Creating resource group XML Schemas
+18:38:23: Added resource location '../../res/cegui/xml_schemas' of type 'FileSystem' to resource group 'XML Schemas'
+18:38:23: Creating resource group debugger
+18:38:23: Added resource location 'C:\' of type 'FileSystem' to resource group 'debugger'
+18:38:23: D3D9 : RenderSystem Option: Allow NVPerfHUD = No
+18:38:23: D3D9 : RenderSystem Option: FSAA = 0
+18:38:23: D3D9 : RenderSystem Option: Floating-point mode = Fastest
+18:38:23: D3D9 : RenderSystem Option: Full Screen = No
+18:38:23: D3D9 : RenderSystem Option: Rendering Device = Monitor-1-NVIDIA GeForce 9800 GT
+18:38:23: D3D9 : RenderSystem Option: Resource Creation Policy = Create on all devices
+18:38:23: D3D9 : RenderSystem Option: VSync = Yes
+18:38:23: D3D9 : RenderSystem Option: VSync Interval = 1
+18:38:23: D3D9 : RenderSystem Option: Video Mode = 1920 x 1080 @ 32-bit colour
+18:38:23: D3D9 : RenderSystem Option: sRGB Gamma Conversion = No
+18:38:23: CPU Identifier & Features
+18:38:23: -------------------------
+18:38:23:  *   CPU ID: AuthenticAMD: AMD Phenom(tm) 9950 Quad-Core Processor
+18:38:23:  *      SSE: yes
+18:38:23:  *     SSE2: yes
+18:38:23:  *     SSE3: yes
+18:38:23:  *      MMX: yes
+18:38:23:  *   MMXEXT: yes
+18:38:23:  *    3DNOW: yes
+18:38:23:  * 3DNOWEXT: yes
+18:38:23:  *     CMOV: yes
+18:38:23:  *      TSC: yes
+18:38:23:  *      FPU: yes
+18:38:23:  *      PRO: yes
+18:38:23:  *       HT: no
+18:38:23: -------------------------
+18:38:23: D3D9 : Subsystem Initialising
+18:38:23: Registering ResourceManager for type Texture
+18:38:23: Registering ResourceManager for type GpuProgram
+18:38:23: D3D9RenderSystem::_createRenderWindow "Project Gravity", 1920x1080 windowed  miscParams: FSAA=0 FSAAHint= colourDepth=32 gamma=false monitorIndex=0 useNVPerfHUD=false vsync=true vsyncInterval=1 
+18:38:23: D3D9 : Created D3D9 Rendering Window 'Project Gravity' : 1904x1080, 32bpp
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT16_R
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT32_R
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+18:38:23: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+18:38:23: RenderSystem capabilities
+18:38:23: -------------------------
+18:38:23: RenderSystem Name: Direct3D9 Rendering Subsystem
+18:38:23: GPU Vendor: nvidia
+18:38:23: Device Name: Monitor-1-NVIDIA GeForce 9800 GT
+18:38:23: Driver Version: 8.17.12.8562
+18:38:24:  * Fixed function pipeline: yes
+18:38:24:  * Hardware generation of mipmaps: yes
+18:38:24:  * Texture blending: yes
+18:38:24:  * Anisotropic texture filtering: yes
+18:38:24:  * Dot product texture operation: yes
+18:38:24:  * Cube mapping: yes
+18:38:24:  * Hardware stencil buffer: yes
+18:38:24:    - Stencil depth: 8
+18:38:24:    - Two sided stencil support: yes
+18:38:24:    - Wrap stencil values: yes
+18:38:24:  * Hardware vertex / index buffers: yes
+18:38:24:  * Vertex programs: yes
+18:38:24:  * Number of floating-point constants for vertex programs: 256
+18:38:24:  * Number of integer constants for vertex programs: 16
+18:38:24:  * Number of boolean constants for vertex programs: 16
+18:38:24:  * Fragment programs: yes
+18:38:24:  * Number of floating-point constants for fragment programs: 224
+18:38:24:  * Number of integer constants for fragment programs: 16
+18:38:24:  * Number of boolean constants for fragment programs: 16
+18:38:24:  * Geometry programs: no
+18:38:24:  * Number of floating-point constants for geometry programs: 29282
+18:38:24:  * Number of integer constants for geometry programs: 29281
+18:38:24:  * Number of boolean constants for geometry programs: 25961
+18:38:24:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
+18:38:24:  * Texture Compression: yes
+18:38:24:    - DXT: yes
+18:38:24:    - VTC: no
+18:38:24:    - PVRTC: no
+18:38:24:  * Scissor Rectangle: yes
+18:38:24:  * Hardware Occlusion Query: yes
+18:38:24:  * User clip planes: yes
+18:38:24:  * VET_UBYTE4 vertex element type: yes
+18:38:24:  * Infinite far plane projection: yes
+18:38:24:  * Hardware render-to-texture: yes
+18:38:24:  * Floating point textures: yes
+18:38:24:  * Non-power-of-two textures: yes
+18:38:24:  * Volume textures: yes
+18:38:24:  * Multiple Render Targets: 4
+18:38:24:    - With different bit depths: yes
+18:38:24:  * Point Sprites: yes
+18:38:24:  * Extended point parameters: yes
+18:38:24:  * Max Point Size: 10
+18:38:24:  * Vertex texture fetch: yes
+18:38:24:  * Number of world matrices: 0
+18:38:24:  * Number of texture units: 8
+18:38:24:  * Stencil buffer depth: 8
+18:38:24:  * Number of vertex blend matrices: 0
+18:38:24:    - Max vertex textures: 4
+18:38:24:    - Vertex textures shared: no
+18:38:24:  * Render to Vertex Buffer : no
+18:38:24:  * DirectX per stage constants: yes
+18:38:24: ***************************************
+18:38:24: *** D3D9 : Subsystem Initialised OK ***
+18:38:24: ***************************************
+18:38:24: DefaultWorkQueue('Root') initialising on thread 0054E390.
+18:38:24: DefaultWorkQueue('Root')::WorkerFunc - thread 0063F798 starting.
+18:38:24: DefaultWorkQueue('Root')::WorkerFunc - thread 0063F808 starting.
+18:38:24: DefaultWorkQueue('Root')::WorkerFunc - thread 0063FCA8 starting.
+18:38:24: Particle Renderer Type 'billboard' registered
+18:38:24: DefaultWorkQueue('Root')::WorkerFunc - thread 03F6D198 starting.
+18:38:24: SceneManagerFactory for type 'BspSceneManager' registered.
+18:38:24: Registering ResourceManager for type BspLevel
+18:38:24: SceneManagerFactory for type 'PCZSceneManager' registered.
+18:38:24: MovableObjectFactory for type 'PCZLight' registered.
+18:38:24: MovableObjectFactory for type 'Portal' registered.
+18:38:24: MovableObjectFactory for type 'AntiPortal' registered.
+18:38:24: PCZone Factory Type 'ZoneType_Octree' registered
+18:38:24: PCZone Factory Type 'ZoneType_Terrain' registered
+18:38:24: SceneManagerFactory for type 'OctreeSceneManager' registered.
+18:38:24: SceneManagerFactory for type 'TerrainSceneManager' registered.
+18:38:24: TerrainSceneManager: Registered a new PageSource for type Heightmap
+18:38:24: Parsing scripts for resource group Autodetect
+18:38:24: Finished parsing scripts for resource group Autodetect
+18:38:24: Parsing scripts for resource group Caelum
+18:38:24: Parsing script DepthRender.program
+18:38:24: Parsing script GroundFog.program
+18:38:24: Parsing script Haze.program
+18:38:24: Parsing script MinimalCompositorVP.program
+18:38:24: Parsing script DepthComposer.material
+18:38:24: Parsing script GroundFog.material
+18:38:24: Parsing script LayeredClouds.material
+18:38:24: Parsing script moon.material
+18:38:24: Parsing script PointStarfield.material
+18:38:24: Parsing script Precipitation.material
+18:38:24: Parsing script SkyDome.material
+18:38:24: Parsing script Starfield.material
+18:38:24: Parsing script Sun.material
+18:38:24: Parsing script DepthComposer.compositor
+18:38:25: Parsing script Precipitation.compositor
+18:38:25: Finished parsing scripts for resource group Caelum
+18:38:25: Parsing scripts for resource group Fonts
+18:38:25: Finished parsing scripts for resource group Fonts
+18:38:25: Parsing scripts for resource group General
+18:38:25: Finished parsing scripts for resource group General
+18:38:25: Parsing scripts for resource group Hydrax
+18:38:25: Finished parsing scripts for resource group Hydrax
+18:38:25: Parsing scripts for resource group Imagesets
+18:38:25: Finished parsing scripts for resource group Imagesets
+18:38:25: Parsing scripts for resource group Internal
+18:38:25: Finished parsing scripts for resource group Internal
+18:38:25: Parsing scripts for resource group Island
+18:38:25: Parsing script Island.material
+18:38:25: Finished parsing scripts for resource group Island
+18:38:25: Parsing scripts for resource group LUA Scripts
+18:38:25: Finished parsing scripts for resource group LUA Scripts
+18:38:25: Parsing scripts for resource group Layouts
+18:38:25: Finished parsing scripts for resource group Layouts
+18:38:25: Parsing scripts for resource group LookNFeel
+18:38:25: Finished parsing scripts for resource group LookNFeel
+18:38:25: Parsing scripts for resource group Ogre
+18:38:25: Parsing script Examples.program
+18:38:25: Parsing script StdQuad_vp.program
+18:38:25: Parsing script Coconut.material
+18:38:25: Parsing script Coconut2.material
+18:38:25: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Palm.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: High-level program Palm/VP encountered an error during loading and is thus not supported.
 OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Palm.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
-11:58:45: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Palm.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
-11:58:45: High-level program Palm/FP encountered an error during loading and is thus not supported.
+18:38:25: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Palm.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: High-level program Palm/FP encountered an error during loading and is thus not supported.
 OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Palm.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
-11:58:45: Parsing script Examples.material
-11:58:45: OGRE EXCEPTION(2:InvalidParametersException): Parameter called camObjPos does not exist.  in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1433)
-11:58:45: Compiler error: invalid parameters in Examples.material(837): setting of constant failed
-11:58:46: Parsing script FishMaterial.material
-11:58:46: Compiler error: unknown error in FishMaterial.material(60): base object named "MultiLight" not found in script definition
-11:58:46: Compiler error: unknown error in FishMaterial.material(163): base object named "MultiLight" not found in script definition
-11:58:46: OGRE EXCEPTION(2:InvalidParametersException): Parameter called ambient does not exist.  in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1433)
-11:58:46: Compiler error: invalid parameters in FishMaterial.material(129): setting of constant failed
-11:58:46: Compiler error: reference to a non existing object in FishMaterial.material(133)
-11:58:46: Compiler error: reference to a non existing object in FishMaterial.material(141)
-11:58:46: Parsing script hdr.material
-11:58:47: Parsing script Material.material
-11:58:47: Finished parsing scripts for resource group Ogre
-11:58:47: Parsing scripts for resource group Schemes
-11:58:47: Finished parsing scripts for resource group Schemes
-11:58:47: Parsing scripts for resource group XML Schemas
-11:58:47: Finished parsing scripts for resource group XML Schemas
-11:58:47: Parsing scripts for resource group debugger
-11:58:47: Finished parsing scripts for resource group debugger
-11:58:47: [Hydrax] Hydrax created.
-11:58:47: [Hydrax] GSOcean.hdx loaded.
-11:58:47: [Hydrax] Creating module...
-11:58:47: [Hydrax] Creating ProjectedGridVertex module.
-11:58:47: [Hydrax] ProjectedGridVertex created.
-11:58:47: [Hydrax] Module created.
-11:58:47: [Hydrax] Initializating RTT Manager...
-11:58:47: [Hydrax] RTT manager initialized.
-11:58:47: [Hydrax] Registring device restored listener...
-11:58:47: [Hydrax] Device restored listener registred.
-11:58:47: [Hydrax] Creating materials...
-11:58:47: [Hydrax] Creating water material...
-11:58:47: Texture: Fresnel.bmp: Loading 1 faces(PF_L8,256x1x1) with  hardware generated mipmaps from Image. Internal format is PF_L8,256x1x1.
-11:58:47: Texture: Foam.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
-11:58:47: [Hydrax] Water material created.
-11:58:47: [Hydrax] Creating depth material...
-11:58:47: Texture: Caustics_0.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_1.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_2.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_3.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_4.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_5.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_6.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_7.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_8.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_9.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_10.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_11.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_12.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_13.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_14.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_15.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_16.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_17.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_18.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_19.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_20.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_21.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_22.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_23.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_24.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_25.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_26.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_27.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_28.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_29.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_30.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: Texture: Caustics_31.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-11:58:47: [Hydrax] Depth material created.
-11:58:47: [Hydrax] Creating underwater material...
-11:58:47: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource HydraxDepthReflectionMap in resource group Hydrax or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
-11:58:47: Error loading texture HydraxDepthReflectionMap. Texture layer will be blank. Loading the texture failed with the following exception: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource HydraxDepthReflectionMap in resource group Hydrax or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
-11:58:47: Texture: UnderwaterDistortion.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
-11:58:47: [Hydrax] Underwater material created.
-11:58:47: [Hydrax] Materials created.
-11:58:47: [Hydrax] Creating god rays...
-11:58:47: [Hydrax] Perlin destroyed.
-11:58:47: [Hydrax] God rays created.
-11:58:47: [Hydrax] Creating water mesh...
-11:58:47: [Hydrax] Water mesh created.
-11:58:47: Texture: _cegui_ogre_0: Loading 1 faces(PF_A8B8G8R8,128x128x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
-11:58:48: Mesh: Loading Palm2.mesh.
-11:58:48: Skeleton: Loading Palm2.skeleton
-11:58:48: WARNING: Palm2.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
-11:58:48: Texture: coconut.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
-11:58:48: Texture: palm.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
-11:58:48: WARNING: the mesh 'Palm2.mesh' includes vertices without bone assignments. Those vertices will transform to wrong position when skeletal animation enabled. To eliminate this, assign at least one bone assignment per vertex on your mesh.
-11:58:48: Mesh: Loading Icosphere.mesh.
-11:58:48: WARNING: Icosphere.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
-11:58:48: Texture: scalesTexture.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
-11:58:48: Texture: angelFishUV.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
-11:58:48: TerrainSceneManager: Activated PageSource Heightmap
-11:58:48: Texture: Sand.tga: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
-11:58:48: Texture: Sand.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
-11:58:48: Texture: SandGrass.tga: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
-11:58:48: Texture: SandGrass.png: Loading 1 faces(PF_R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
-11:58:49: *** Initializing OIS ***
-11:58:49: Creating resource group OgreBulletCollisions
-11:58:49: Mesh: Loading robot.mesh.
-11:58:49: Skeleton: Loading robot.skeleton
-11:58:49: Texture: r2skin.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
-11:58:49: Mesh: Loading knot.mesh.
-11:58:49: Texture: MtlPlat2.jpg: Loading 1 faces(PF_R8G8B8,780x511x1) with 5 generated mipmaps from Image. Internal format is PF_X8R8G8B8,780x511x1.
-11:58:49: Caelum: Initialising Caelum system...
-11:58:49: Caelum: Plugin not installed; installing now.
-11:58:49: Caelum plugin version 0.5.0 installed
-11:58:49: Registering ResourceManager for type PropertyScript
-11:58:49: Caelum: Creating caelum sub-components.
-11:58:49: Texture: EarthClearSky2.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
-11:58:49: Texture: AtmosphereDepth.png: Loading 1 faces(PF_R8G8B8,32x1x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x1x1.
-11:58:49: Caelum: Creating CaelumSphericDome sphere mesh resource...
-11:58:49: Caelum: generateSphericDome DONE
-11:58:49: Texture: sun_disc.png: Loading 1 faces(PF_A8R8G8B8,800x800x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,800x800x1.
-11:58:49: D3D9 : Loading 2D Texture, image name : 'moon_disc.dds' with 5 mip map levels
-11:58:49: D3D9 : Loading 2D Texture, image name : 'noise1.dds' with 5 mip map levels
-11:58:49: D3D9 : Loading 2D Texture, image name : 'noise2.dds' with 5 mip map levels
-11:58:49: D3D9 : Loading 2D Texture, image name : 'noise4.dds' with 5 mip map levels
-11:58:49: Caelum: DONE initializing
-11:59:00: Mesh: Loading Coco.mesh.
-11:59:00: WARNING: Coco.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
-12:00:06: DefaultWorkQueue('Root') shutting down on thread 0054E2E0.
-12:00:06: DefaultWorkQueue('Root')::WorkerFunc - thread 0061F820 stopped.
-12:00:06: DefaultWorkQueue('Root')::WorkerFunc - thread 0061FD40 stopped.
-12:00:06: DefaultWorkQueue('Root')::WorkerFunc - thread 0061F7B0 stopped.
-12:00:06: DefaultWorkQueue('Root')::WorkerFunc - thread 00624D60 stopped.
-12:00:06: PCZone Factory Type 'ZoneType_Octree' unregistered
-12:00:06: PCZone Factory Type 'ZoneType_Terrain' unregistered
-12:00:06: Unregistering ResourceManager for type BspLevel
-12:00:06: *-*-* OGRE Shutdown
-12:00:06: Unregistering ResourceManager for type Compositor
-12:00:06: Unregistering ResourceManager for type Font
-12:00:06: Unregistering ResourceManager for type Skeleton
-12:00:06: Unregistering ResourceManager for type Mesh
-12:00:06: Unregistering ResourceManager for type HighLevelGpuProgram
-12:00:06: Uninstalling plugin: Octree & Terrain Scene Manager
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\Plugin_OctreeSceneManager
-12:00:06: Uninstalling plugin: Octree Zone Factory
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\Plugin_OctreeZone
-12:00:06: Uninstalling plugin: Portal Connected Zone Scene Manager
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\Plugin_PCZSceneManager
-12:00:06: Uninstalling plugin: Cg Program Manager
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\Plugin_CgProgramManager
-12:00:06: Uninstalling plugin: BSP Scene Manager
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\Plugin_BSPSceneManager
-12:00:06: Uninstalling plugin: ParticleFX
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\Plugin_ParticleFX
-12:00:06: Uninstalling plugin: GL RenderSystem
-12:00:06: *** Stopping Win32GL Subsystem ***
-12:00:06: Plugin successfully uninstalled
-12:00:06: Unloading library .\RenderSystem_GL
-12:00:06: Uninstalling plugin: D3D9 RenderSystem
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: HydraxReflectionMap
-12:00:06: Released D3D9 texture: HydraxReflectionMap
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: HydraxRefractionMap
-12:00:06: Released D3D9 texture: HydraxRefractionMap
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: HydraxDepthMap
-12:00:06: Released D3D9 texture: HydraxDepthMap
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Fresnel.bmp
-12:00:06: Released D3D9 texture: Fresnel.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Foam.png
-12:00:06: Released D3D9 texture: Foam.png
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_0.bmp
-12:00:06: Released D3D9 texture: Caustics_0.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_1.bmp
-12:00:06: Released D3D9 texture: Caustics_1.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_2.bmp
-12:00:06: Released D3D9 texture: Caustics_2.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_3.bmp
-12:00:06: Released D3D9 texture: Caustics_3.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_4.bmp
-12:00:06: Released D3D9 texture: Caustics_4.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_5.bmp
-12:00:06: Released D3D9 texture: Caustics_5.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_6.bmp
-12:00:06: Released D3D9 texture: Caustics_6.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_7.bmp
-12:00:06: Released D3D9 texture: Caustics_7.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_8.bmp
-12:00:06: Released D3D9 texture: Caustics_8.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_9.bmp
-12:00:06: Released D3D9 texture: Caustics_9.bmp
-12:00:06: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_10.bmp
-12:00:07: Released D3D9 texture: Caustics_10.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_11.bmp
-12:00:07: Released D3D9 texture: Caustics_11.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_12.bmp
-12:00:07: Released D3D9 texture: Caustics_12.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_13.bmp
-12:00:07: Released D3D9 texture: Caustics_13.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_14.bmp
-12:00:07: Released D3D9 texture: Caustics_14.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_15.bmp
-12:00:07: Released D3D9 texture: Caustics_15.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_16.bmp
-12:00:07: Released D3D9 texture: Caustics_16.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_17.bmp
-12:00:07: Released D3D9 texture: Caustics_17.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_18.bmp
-12:00:07: Released D3D9 texture: Caustics_18.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_19.bmp
-12:00:07: Released D3D9 texture: Caustics_19.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_20.bmp
-12:00:07: Released D3D9 texture: Caustics_20.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_21.bmp
-12:00:07: Released D3D9 texture: Caustics_21.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_22.bmp
-12:00:07: Released D3D9 texture: Caustics_22.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_23.bmp
-12:00:07: Released D3D9 texture: Caustics_23.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_24.bmp
-12:00:07: Released D3D9 texture: Caustics_24.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_25.bmp
-12:00:07: Released D3D9 texture: Caustics_25.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_26.bmp
-12:00:07: Released D3D9 texture: Caustics_26.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_27.bmp
-12:00:07: Released D3D9 texture: Caustics_27.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_28.bmp
-12:00:07: Released D3D9 texture: Caustics_28.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_29.bmp
-12:00:07: Released D3D9 texture: Caustics_29.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_30.bmp
-12:00:07: Released D3D9 texture: Caustics_30.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: Caustics_31.bmp
-12:00:07: Released D3D9 texture: Caustics_31.bmp
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: UnderwaterDistortion.jpg
-12:00:07: Released D3D9 texture: UnderwaterDistortion.jpg
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: HydraxReflectionMap
-12:00:07: Released D3D9 texture: HydraxReflectionMap
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: HydraxRefractionMap
-12:00:07: Released D3D9 texture: HydraxRefractionMap
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: HydraxDepthMap
-12:00:07: Released D3D9 texture: HydraxDepthMap
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: _cegui_ogre_0
-12:00:07: Released D3D9 texture: _cegui_ogre_0
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: EarthClearSky2.png
-12:00:07: Released D3D9 texture: EarthClearSky2.png
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: AtmosphereDepth.png
-12:00:07: Released D3D9 texture: AtmosphereDepth.png
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: sun_disc.png
-12:00:07: Released D3D9 texture: sun_disc.png
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: moon_disc.dds
-12:00:07: Released D3D9 texture: moon_disc.dds
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: noise1.dds
-12:00:07: Released D3D9 texture: noise1.dds
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: noise2.dds
-12:00:07: Released D3D9 texture: noise2.dds
-12:00:07: D3D9 device: 0x[03DB1C20] destroy. Releasing D3D9 texture: noise4.dds
-12:00:07: Released D3D9 texture: noise4.dds
-12:00:07: D3D9 : Shutting down cleanly.
-12:00:07: Unregistering ResourceManager for type Texture
-12:00:07: Unregistering ResourceManager for type GpuProgram
-12:00:07: D3D9 : Direct3D9 Rendering Subsystem destroyed.
-12:00:07: Plugin successfully uninstalled
-12:00:07: Unloading library .\RenderSystem_Direct3D9
-12:00:07: Unregistering ResourceManager for type Material
+18:38:25: Parsing script Examples-Advanced.material
+18:38:25: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_CelShading.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: High-level program Ogre/CelShadingVP encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_CelShading.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: OGRE EXCEPTION(2:InvalidParametersException): Named constants have not been initialised, perhaps a compile error. in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1423)
+18:38:25: Compiler error: invalid parameters in Examples-Advanced.material(12): setting of constant failed
+18:38:25: OGRE EXCEPTION(2:InvalidParametersException): Named constants have not been initialised, perhaps a compile error. in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1423)
+18:38:25: Compiler error: invalid parameters in Examples-Advanced.material(13): setting of constant failed
+18:38:25: OGRE EXCEPTION(2:InvalidParametersException): Named constants have not been initialised, perhaps a compile error. in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1423)
+18:38:25: Compiler error: invalid parameters in Examples-Advanced.material(14): setting of constant failed
+18:38:25: OGRE EXCEPTION(2:InvalidParametersException): Named constants have not been initialised, perhaps a compile error. in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1423)
+18:38:25: Compiler error: invalid parameters in Examples-Advanced.material(15): setting of constant failed
+18:38:25: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_CelShading.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: High-level program Ogre/CelShadingFP encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_CelShading.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Projection.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: High-level program Examples/TexProjectionVP encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Projection.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Projection.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:25: High-level program Examples/TexProjectionFP encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Projection.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Fresnel.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: High-level program Examples/FresnelRefractReflectVP encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Fresnel.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Fresnel.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: High-level program Examples/FresnelRefractReflectFP encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Fresnel.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Fresnel.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: High-level program Examples/FresnelRefractReflectVPold encountered an error during loading and is thus not supported.
+OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource Example_Fresnel.cg in resource group Ogre or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:26: Parsing script Examples.material
+18:38:26: OGRE EXCEPTION(2:InvalidParametersException): Parameter called camObjPos does not exist.  in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1433)
+18:38:26: Compiler error: invalid parameters in Examples.material(837): setting of constant failed
+18:38:27: Parsing script FishMaterial.material
+18:38:27: Compiler error: unknown error in FishMaterial.material(60): base object named "MultiLight" not found in script definition
+18:38:27: Compiler error: unknown error in FishMaterial.material(161): base object named "MultiLight" not found in script definition
+18:38:27: OGRE EXCEPTION(2:InvalidParametersException): Parameter called ambient does not exist.  in GpuProgramParameters::_findNamedConstantDefinition at ..\..\..\..\OgreMain\src\OgreGpuProgramParams.cpp (line 1433)
+18:38:27: Compiler error: invalid parameters in FishMaterial.material(129): setting of constant failed
+18:38:27: Parsing script gravityGun.material
+18:38:27: Parsing script hdr.material
+18:38:28: Parsing script Material.material
+18:38:28: Parsing script Ocean.material
+18:38:28: Parsing script Palm.material
+18:38:28: Finished parsing scripts for resource group Ogre
+18:38:28: Parsing scripts for resource group Schemes
+18:38:28: Finished parsing scripts for resource group Schemes
+18:38:28: Parsing scripts for resource group XML Schemas
+18:38:28: Finished parsing scripts for resource group XML Schemas
+18:38:28: Parsing scripts for resource group debugger
+18:38:28: Finished parsing scripts for resource group debugger
+18:38:28: [Hydrax] Hydrax created.
+18:38:28: [Hydrax] PGOcean.hdx loaded.
+18:38:28: [Hydrax] Creating module...
+18:38:28: [Hydrax] Creating ProjectedGridVertex module.
+18:38:28: [Hydrax] ProjectedGridVertex created.
+18:38:28: [Hydrax] Module created.
+18:38:28: [Hydrax] Initializating RTT Manager...
+18:38:28: [Hydrax] RTT manager initialized.
+18:38:28: [Hydrax] Registring device restored listener...
+18:38:28: [Hydrax] Device restored listener registred.
+18:38:28: [Hydrax] Creating materials...
+18:38:28: [Hydrax] Creating water material...
+18:38:28: Texture: Fresnel.bmp: Loading 1 faces(PF_L8,256x1x1) with  hardware generated mipmaps from Image. Internal format is PF_L8,256x1x1.
+18:38:28: Texture: Foam.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+18:38:28: [Hydrax] Water material created.
+18:38:28: [Hydrax] Creating depth material...
+18:38:28: Texture: Caustics_0.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_1.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_2.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_3.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_4.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_5.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_6.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_7.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_8.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_9.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_10.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_11.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_12.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_13.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_14.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_15.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_16.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_17.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_18.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_19.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_20.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_21.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_22.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_23.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_24.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_25.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_26.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_27.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_28.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_29.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_30.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: Texture: Caustics_31.bmp: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+18:38:28: [Hydrax] Depth material created.
+18:38:28: [Hydrax] Creating underwater material...
+18:38:29: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource HydraxDepthReflectionMap in resource group Hydrax or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:29: Error loading texture HydraxDepthReflectionMap. Texture layer will be blank. Loading the texture failed with the following exception: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource HydraxDepthReflectionMap in resource group Hydrax or any other group. in ResourceGroupManager::openResource at ..\..\..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+18:38:29: Texture: UnderwaterDistortion.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+18:38:29: [Hydrax] Underwater material created.
+18:38:29: [Hydrax] Materials created.
+18:38:29: [Hydrax] Creating god rays...
+18:38:29: [Hydrax] Perlin destroyed.
+18:38:29: [Hydrax] God rays created.
+18:38:29: [Hydrax] Creating water mesh...
+18:38:29: [Hydrax] Water mesh created.
+18:38:29: Texture: _cegui_ogre_0: Loading 1 faces(PF_A8B8G8R8,128x128x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+18:38:29: Mesh: Loading Palm2.mesh.
+18:38:29: Skeleton: Loading Palm2.skeleton
+18:38:29: WARNING: Palm2.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+18:38:29: Texture: coconut.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+18:38:29: Texture: palm.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+18:38:29: WARNING: the mesh 'Palm2.mesh' includes vertices without bone assignments. Those vertices will transform to wrong position when skeletal animation enabled. To eliminate this, assign at least one bone assignment per vertex on your mesh.
+18:38:29: Mesh: Loading angelFish.mesh.
+18:38:29: Skeleton: Loading angelFish.skeleton
+18:38:29: WARNING: angelFish.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+18:38:29: Texture: scalesTexture.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+18:38:30: Texture: angelFishUV.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+18:38:30: TerrainSceneManager: Activated PageSource Heightmap
+18:38:30: Texture: Sand.tga: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+18:38:30: Texture: Sand.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+18:38:30: Texture: SandGrass.tga: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+18:38:30: Texture: SandGrass.png: Loading 1 faces(PF_R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
+18:38:30: *** Initializing OIS ***
+18:38:30: Creating resource group OgreBulletCollisions
+18:38:30: Mesh: Loading robot.mesh.
+18:38:30: Skeleton: Loading robot.skeleton
+18:38:30: Texture: r2skin.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+18:38:30: Mesh: Loading knot.mesh.
+18:38:30: Texture: MtlPlat2.jpg: Loading 1 faces(PF_R8G8B8,780x511x1) with 5 generated mipmaps from Image. Internal format is PF_X8R8G8B8,780x511x1.
+18:38:30: Caelum: Initialising Caelum system...
+18:38:30: Caelum: Plugin not installed; installing now.
+18:38:30: Caelum plugin version 0.5.0 installed
+18:38:30: Registering ResourceManager for type PropertyScript
+18:38:30: Caelum: Creating caelum sub-components.
+18:38:30: Texture: EarthClearSky2.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+18:38:30: Texture: AtmosphereDepth.png: Loading 1 faces(PF_R8G8B8,32x1x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x1x1.
+18:38:30: Caelum: Creating CaelumSphericDome sphere mesh resource...
+18:38:30: Caelum: generateSphericDome DONE
+18:38:30: Texture: sun_disc.png: Loading 1 faces(PF_A8R8G8B8,800x800x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,800x800x1.
+18:38:31: D3D9 : Loading 2D Texture, image name : 'moon_disc.dds' with 5 mip map levels
+18:38:31: D3D9 : Loading 2D Texture, image name : 'noise1.dds' with 5 mip map levels
+18:38:31: D3D9 : Loading 2D Texture, image name : 'noise2.dds' with 5 mip map levels
+18:38:31: D3D9 : Loading 2D Texture, image name : 'noise4.dds' with 5 mip map levels
+18:38:31: Caelum: DONE initializing
+18:38:31: Mesh: Loading GravityGun.mesh.
+18:38:31: Skeleton: Loading GravityGun.skeleton
+18:38:31: WARNING: GravityGun.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+18:38:31: Texture: gravityGunCurve.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+18:38:31: D3D9 : Loading 2D Texture, image name : 'waves2.dds' with 5 mip map levels
+18:38:31: Texture: skyReflection.jpg: Loading 1 faces(PF_R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
+18:38:31: Texture: islandAlphaMap.png: Loading 1 faces(PF_A8R8G8B8,1000x1000x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,1000x1000x1.
+18:38:31: Texture: oceanFade.png: Loading 1 faces(PF_A8R8G8B8,1000x1000x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,1000x1000x1.
+18:39:00: Mesh: Loading Coco.mesh.
+18:39:00: WARNING: Coco.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+18:39:24: DefaultWorkQueue('Root') shutting down on thread 0054E390.
+18:39:24: DefaultWorkQueue('Root')::WorkerFunc - thread 03F6D198 stopped.
+18:39:24: DefaultWorkQueue('Root')::WorkerFunc - thread 0063F798 stopped.
+18:39:24: DefaultWorkQueue('Root')::WorkerFunc - thread 0063FCA8 stopped.
+18:39:24: DefaultWorkQueue('Root')::WorkerFunc - thread 0063F808 stopped.
+18:39:24: PCZone Factory Type 'ZoneType_Octree' unregistered
+18:39:24: PCZone Factory Type 'ZoneType_Terrain' unregistered
+18:39:24: Unregistering ResourceManager for type BspLevel
+18:39:24: *-*-* OGRE Shutdown
+18:39:25: Unregistering ResourceManager for type Compositor
+18:39:25: Unregistering ResourceManager for type Font
+18:39:25: Unregistering ResourceManager for type Skeleton
+18:39:25: Unregistering ResourceManager for type Mesh
+18:39:25: Unregistering ResourceManager for type HighLevelGpuProgram
+18:39:25: Uninstalling plugin: Octree & Terrain Scene Manager
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\Plugin_OctreeSceneManager
+18:39:25: Uninstalling plugin: Octree Zone Factory
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\Plugin_OctreeZone
+18:39:25: Uninstalling plugin: Portal Connected Zone Scene Manager
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\Plugin_PCZSceneManager
+18:39:25: Uninstalling plugin: Cg Program Manager
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\Plugin_CgProgramManager
+18:39:25: Uninstalling plugin: BSP Scene Manager
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\Plugin_BSPSceneManager
+18:39:25: Uninstalling plugin: ParticleFX
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\Plugin_ParticleFX
+18:39:25: Uninstalling plugin: GL RenderSystem
+18:39:25: *** Stopping Win32GL Subsystem ***
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\RenderSystem_GL
+18:39:25: Uninstalling plugin: D3D9 RenderSystem
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: HydraxReflectionMap
+18:39:25: Released D3D9 texture: HydraxReflectionMap
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: HydraxRefractionMap
+18:39:25: Released D3D9 texture: HydraxRefractionMap
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: HydraxDepthMap
+18:39:25: Released D3D9 texture: HydraxDepthMap
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Fresnel.bmp
+18:39:25: Released D3D9 texture: Fresnel.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Foam.png
+18:39:25: Released D3D9 texture: Foam.png
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_0.bmp
+18:39:25: Released D3D9 texture: Caustics_0.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_1.bmp
+18:39:25: Released D3D9 texture: Caustics_1.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_2.bmp
+18:39:25: Released D3D9 texture: Caustics_2.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_3.bmp
+18:39:25: Released D3D9 texture: Caustics_3.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_4.bmp
+18:39:25: Released D3D9 texture: Caustics_4.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_5.bmp
+18:39:25: Released D3D9 texture: Caustics_5.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_6.bmp
+18:39:25: Released D3D9 texture: Caustics_6.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_7.bmp
+18:39:25: Released D3D9 texture: Caustics_7.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_8.bmp
+18:39:25: Released D3D9 texture: Caustics_8.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_9.bmp
+18:39:25: Released D3D9 texture: Caustics_9.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_10.bmp
+18:39:25: Released D3D9 texture: Caustics_10.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_11.bmp
+18:39:25: Released D3D9 texture: Caustics_11.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_12.bmp
+18:39:25: Released D3D9 texture: Caustics_12.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_13.bmp
+18:39:25: Released D3D9 texture: Caustics_13.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_14.bmp
+18:39:25: Released D3D9 texture: Caustics_14.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_15.bmp
+18:39:25: Released D3D9 texture: Caustics_15.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_16.bmp
+18:39:25: Released D3D9 texture: Caustics_16.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_17.bmp
+18:39:25: Released D3D9 texture: Caustics_17.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_18.bmp
+18:39:25: Released D3D9 texture: Caustics_18.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_19.bmp
+18:39:25: Released D3D9 texture: Caustics_19.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_20.bmp
+18:39:25: Released D3D9 texture: Caustics_20.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_21.bmp
+18:39:25: Released D3D9 texture: Caustics_21.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_22.bmp
+18:39:25: Released D3D9 texture: Caustics_22.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_23.bmp
+18:39:25: Released D3D9 texture: Caustics_23.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_24.bmp
+18:39:25: Released D3D9 texture: Caustics_24.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_25.bmp
+18:39:25: Released D3D9 texture: Caustics_25.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_26.bmp
+18:39:25: Released D3D9 texture: Caustics_26.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_27.bmp
+18:39:25: Released D3D9 texture: Caustics_27.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_28.bmp
+18:39:25: Released D3D9 texture: Caustics_28.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_29.bmp
+18:39:25: Released D3D9 texture: Caustics_29.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_30.bmp
+18:39:25: Released D3D9 texture: Caustics_30.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: Caustics_31.bmp
+18:39:25: Released D3D9 texture: Caustics_31.bmp
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: UnderwaterDistortion.jpg
+18:39:25: Released D3D9 texture: UnderwaterDistortion.jpg
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: _cegui_ogre_0
+18:39:25: Released D3D9 texture: _cegui_ogre_0
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: EarthClearSky2.png
+18:39:25: Released D3D9 texture: EarthClearSky2.png
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: AtmosphereDepth.png
+18:39:25: Released D3D9 texture: AtmosphereDepth.png
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: sun_disc.png
+18:39:25: Released D3D9 texture: sun_disc.png
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: moon_disc.dds
+18:39:25: Released D3D9 texture: moon_disc.dds
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: noise1.dds
+18:39:25: Released D3D9 texture: noise1.dds
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: noise2.dds
+18:39:25: Released D3D9 texture: noise2.dds
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: noise4.dds
+18:39:25: Released D3D9 texture: noise4.dds
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: HydraxReflectionMap
+18:39:25: Released D3D9 texture: HydraxReflectionMap
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: HydraxRefractionMap
+18:39:25: Released D3D9 texture: HydraxRefractionMap
+18:39:25: D3D9 device: 0x[035D1C20] destroy. Releasing D3D9 texture: HydraxDepthMap
+18:39:25: Released D3D9 texture: HydraxDepthMap
+18:39:25: D3D9 : Shutting down cleanly.
+18:39:25: Unregistering ResourceManager for type Texture
+18:39:25: Unregistering ResourceManager for type GpuProgram
+18:39:25: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+18:39:25: Plugin successfully uninstalled
+18:39:25: Unloading library .\RenderSystem_Direct3D9
+18:39:25: Unregistering ResourceManager for type Material

@@ -1,16 +1,16 @@
 
-// blender material: Material
+// blender material: Coconut
 material Coconut 
 {
     receive_shadows on
-    technique 
+    technique b2ogre_1327710599.692
     {
-        pass 
+        pass b2ogre_1327710599.692
         {
-            texture_unit
+            shading gouraud
+            texture_unit b2ogre_1327710599.692
             {
                 texture coconut.png
-
             }
         }
     }

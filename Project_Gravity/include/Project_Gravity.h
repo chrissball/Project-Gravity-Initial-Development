@@ -30,6 +30,7 @@ private:
 
     Ogre::Root *mRoot;
     Ogre::Camera* mCamera;
+    Ogre::Camera* mCubeCamera;
     Ogre::SceneManager* mSceneMgr;
     Ogre::RenderWindow* mWindow;
     Ogre::String mResourcesCfg;
@@ -57,9 +58,15 @@ private:
 	Ogre::SceneNode *palmNode4;
 	
 	Ogre::SceneNode* playerNode;
+	Ogre::SceneNode* gravityGun;
+	double currentTicks;
+	double speedFactor;
+	double targetFPS;
+	double frameDelay;
 
 	// Hydrax pointer
 	Hydrax::Hydrax *mHydrax;
+	Hydrax::Hydrax *mHydrax2;
 };
  
  #endif // #ifndef __Project_Gravity_h_

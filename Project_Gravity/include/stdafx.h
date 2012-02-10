@@ -40,6 +40,7 @@
 
 #include "Hydrax/Hydrax.h"
 #include "Hydrax/Noise/Perlin/Perlin.h"
+#include "Hydrax/Modules/RadialGrid/RadialGrid.h"
 #include "Hydrax/Modules/ProjectedGrid/ProjectedGrid.h"
 
 #include "Caelum.h"

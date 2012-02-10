@@ -1,0 +1,27 @@
+material gravityGun
+{
+
+
+	technique
+	{
+		pass
+		{            
+			texture_unit
+			{
+				// will be filled in at runtime
+				cubic_texture dyncubemap combinedUVW
+				tex_address_mode clamp
+				env_map cubic_reflection
+			}
+		}
+		pass
+		{
+			scene_blend alpha_blend
+			texture_unit
+			{
+				texture gravityGunCurve.png
+				//colour_op alpha_blend
+			}
+		}
+	}	
+}
